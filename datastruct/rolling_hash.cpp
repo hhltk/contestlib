@@ -114,11 +114,7 @@ public:
 			}
 		}
 	}
-	pair<int, int> get(int a, int b) {
-		return {get(a, b, 0), get(a, b, 1)};
-	}
-	pair<int, int> get() {
-		return get(0, s.size() - 1);
-	}
+	pair<int, int> get(int a, int b) { return {get(a, b, 0), get(a, b, 1)}; }
+	pair<int, int> get() { return get(0, s.size() - 1); }
 	
 };
