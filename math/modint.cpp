@@ -8,7 +8,7 @@ private:
 public:
 	modint() : v(0) {}
 	modint(ll x) : v(x % MOD) { if (v < 0) v += MOD; }
-	operator int() const { return v; }
+	explicit operator int() const { return v; }
 
 	friend ostream &operator<<(ostream &out, const modint &a) { return out << int(a); }
 	friend istream &operator>>(istream &in, modint &a) { ll x; in >> x; a = modint(x); return in; }
