@@ -70,4 +70,4 @@ public:
 	friend modint operator*(const modint &a, const modint &b) { return modint(a) *= b; }
 	friend modint operator/(const modint &a, const modint &b) { return modint(a) /= b; }
 };
-using mint=modint<int(1e9)+7>;
+using mint = modint<int(1e9)+7>;
