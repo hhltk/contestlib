@@ -1,7 +1,7 @@
 template <typename T> struct RMQ {
-	int lvl(int x) { return 31 - __builtin_clz(x); }
 	vector<vector<int>> spr;
 	vector<T> v;
+	int lvl(int x) { return 31 - __builtin_clz(x); }
 	int combine(int a, int b) { return v[a] <= v[b] ? a : b; }
 	RMQ() {}
 	RMQ(vector<T> &v_) : v(v_) {

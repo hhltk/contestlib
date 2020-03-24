@@ -1,7 +1,6 @@
 static const int MOD = 1e9 + 7;
 using mint = modint<MOD>;
 
-
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int A[2] = {uniform_int_distribution<int>(1, MOD)(rng), uniform_int_distribution<int>(1, MOD)(rng)};
 
@@ -27,5 +26,4 @@ public:
 	}
 	pair<int, int> get(int a, int b) { return {get(a, b, 0), get(a, b, 1)}; }
 	pair<int, int> get() { return get(0, s.size() - 1); }
-	
 };

@@ -1,6 +1,7 @@
 using mint = modint<int(1e9)+7>;
 
 vector<mint> fact, ifact;
+
 void init(int N = int(1e6)) {
 	fact.resize(N + 1);
 	ifact.resize(N + 1);

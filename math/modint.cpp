@@ -9,6 +9,7 @@ public:
 	modint() : v(0) {}
 	modint(ll x) : v(x % MOD) { if (v < 0) v += MOD; }
 	explicit operator int() const { return v; }
+	explicit operator ll() const { return v; }
 
 	friend ostream &operator<<(ostream &out, const modint &a) { return out << int(a); }
 	friend istream &operator>>(istream &in, modint &a) { ll x; in >> x; a = modint(x); return in; }
@@ -70,4 +71,5 @@ public:
 	friend modint operator*(const modint &a, const modint &b) { return modint(a) *= b; }
 	friend modint operator/(const modint &a, const modint &b) { return modint(a) /= b; }
 };
+
 using mint = modint<int(1e9)+7>;
