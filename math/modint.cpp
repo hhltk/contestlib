@@ -11,16 +11,16 @@ public:
 	explicit operator int() const { return v; }
 	explicit operator ll() const { return v; }
 
-	friend ostream &operator<<(ostream &out, const modint &a) { return out << int(a); }
-	friend istream &operator>>(istream &in, modint &a) { ll x; in >> x; a = modint(x); return in; }
+	friend ostream& operator<<(ostream& out, const modint& a) { return out << int(a); }
+	friend istream& operator>>(istream& in, modint& a) { ll x; in >> x; a = modint(x); return in; }
 
-	friend bool operator==(const modint &a, const modint &b) { return a.v == b.v; }
-	friend bool operator!=(const modint &a, const modint &b) { return a.v != b.v; }
+	friend bool operator==(const modint& a, const modint& b) { return a.v == b.v; }
+	friend bool operator!=(const modint& a, const modint& b) { return a.v != b.v; }
 
 	modint inv() const { return pow(*this, MOD - 2); } // only works if MOD prime
-	friend modint inv(const modint &x) { return x.inv(); }
+	friend modint inv(const modint& x) { return x.inv(); }
 	modint neg() const { return modint(v ? MOD - v : 0); }
-	friend modint neg(const modint &x) { return x.neg(); }
+	friend modint neg(const modint& x) { return x.neg(); }
 
 	modint operator-() const { return neg(); }
 	modint operator+() const { return modint(*this); }
@@ -36,30 +36,30 @@ public:
 		return *this;
 	}
 
-	modint &operator+=(const modint &a) {
+	modint &operator+=(const modint& a) {
 		v += a.v;
 		if (v >= MOD) v -= MOD;
 		return *this;
 	}
-	modint &operator-=(const modint &a) {
+	modint &operator-=(const modint& a) {
 		v -= a.v;
 		if (v < 0) v += MOD;
 		return *this;
 	}
-	modint &operator*=(const modint &a) {
+	modint &operator*=(const modint& a) {
 		v = ll(v) * ll(a.v) % MOD;
 		return *this;
 	}
-	modint &operator/=(const modint &a) {
+	modint &operator/=(const modint& a) {
 		return *this *= a.inv();
 	}
 
-	friend modint operator++(const modint &a, int) { modint r = a; ++a; return r; }
-	friend modint operator--(const modint &a, int) { modint r = a; --a; return r; }
-	friend modint operator+(const modint &a, const modint &b) { return modint(a) += b; }
-	friend modint operator-(const modint &a, const modint &b) { return modint(a) -= b; }
-	friend modint operator*(const modint &a, const modint &b) { return modint(a) *= b; }
-	friend modint operator/(const modint &a, const modint &b) { return modint(a) /= b; }
+	friend modint operator++(const modint& a, int) { modint r = a; ++a; return r; }
+	friend modint operator--(const modint& a, int) { modint r = a; --a; return r; }
+	friend modint operator+(const modint& a, const modint& b) { return modint(a) += b; }
+	friend modint operator-(const modint& a, const modint& b) { return modint(a) -= b; }
+	friend modint operator*(const modint& a, const modint& b) { return modint(a) *= b; }
+	friend modint operator/(const modint& a, const modint& b) { return modint(a) /= b; }
 };
 
 using mint = modint<int(1e9)+7>;

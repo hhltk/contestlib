@@ -6,7 +6,7 @@ template <typename T> struct RMQ {
 	vector<vi> spr;
 	vector<T> v;
 
-	RMQ(const vector<T> &v_) : v(v_) {
+	RMQ(const vector<T>& v_) : v(v_) {
 		spr = {vi(sz(v))}; iota(all(spr[0]), 0);
 		for (int j = 1; (1 << j) <= sz(v); ++j) {
 			spr.push_back(vi(sz(v) - (1 << j) + 1));

@@ -7,12 +7,12 @@ struct LCA {
 	vector<pii> r;
 	RMQ<pii> rmq;
 
-	LCA(graph &g) : time(sz(g)), dist(sz(g)), rmq((dfs(0, 0, g), r)) {}
+	LCA(graph& g) : time(sz(g)), dist(sz(g)), rmq((dfs(0, 0, g), r)) {}
 
-	void dfs(int s, int e, graph &g) {
+	void dfs(int s, int e, graph& g) {
 		time[s] = r.size();
 		r.push_back({dist[s], s});
-		for (auto &u : g[s]) if (u != e) {
+		for (auto& u : g[s]) if (u != e) {
 			r.push_back({dist[s], s});
 			dist[u] = dist[s] + 1;
 			dfs(u, s, g);
