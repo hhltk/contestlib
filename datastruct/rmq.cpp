@@ -7,7 +7,6 @@ template <typename T> struct RMQ {
 	vector<T> v;
 	int lvl(int x) { return 31 - __builtin_clz(x); }
 	int combine(int a, int b) { return v[a] <= v[b] ? a : b; }
-	RMQ() {}
 	RMQ(const vector<T> &v_) : v(v_) {
 		spr = {vi(sz(v))}; iota(all(spr[0]), 0);
 		for (int j = 1; (1 << j) <= sz(v); ++j) {
