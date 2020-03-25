@@ -17,23 +17,13 @@ public:
 	friend bool operator==(const modint &a, const modint &b) { return a.v == b.v; }
 	friend bool operator!=(const modint &a, const modint &b) { return a.v != b.v; }
 
-	modint inv() const {
-		modint r = v;
-		r = pow(r, MOD - 2);
-		return r;
-	}
+	modint inv() const { return pow(*this, MOD - 2); } // only works if MOD prime
 	friend modint inv(const modint &x) { return x.inv(); }
-	modint neg() const {
-		return modint(v ? MOD - v : 0);
-	}
+	modint neg() const { return modint(v ? MOD - v : 0); }
 	friend modint neg(const modint &x) { return x.neg(); }
 
-	modint operator-() const {
-		return neg();
-	}
-	modint operator+() const {
-		return mogint(*this);
-	}
+	modint operator-() const { return neg(); }
+	modint operator+() const { return modint(*this); }
 
 	modint &operator++() {
 		v++;
