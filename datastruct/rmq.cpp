@@ -5,8 +5,7 @@ using vi = vector<int>;
 template <typename T> struct RMQ {
 	vector<vi> spr;
 	vector<T> v;
-	int lvl(int x) { return 31 - __builtin_clz(x); }
-	int combine(int a, int b) { return v[a] <= v[b] ? a : b; }
+
 	RMQ(const vector<T> &v_) : v(v_) {
 		spr = {vi(sz(v))}; iota(all(spr[0]), 0);
 		for (int j = 1; (1 << j) <= sz(v); ++j) {
@@ -16,9 +15,13 @@ template <typename T> struct RMQ {
 			}
 		}
 	}
+
+	int lvl(int x) { return 31 - __builtin_clz(x); }
+	int combine(int a, int b) { return v[a] <= v[b] ? a : b; }
+
 	int get(int l, int r) {
 		int d = lvl(r - l + 1);
 		return combine(spr[d][l], spr[d][r - (1 << d) + 1]);
 	}
-	int getval(int l, int r) { return v[get(l, r)]; }
+	T getval(int l, int r) { return v[get(l, r)]; }
 };
