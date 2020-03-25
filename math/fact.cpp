@@ -1,5 +1,3 @@
-using mint = modint<int(1e9)+7>;
-
 vector<mint> fact, ifact;
 
 void init(int N = int(1e6)) {
