@@ -5,7 +5,7 @@ struct Tree {
 	function<T(T, T)> f;
 	vector<T> t;
 	Tree(int n_, T I_, function<T(T, T)> f_) : n(n_), I(I_), f(f_), t(n * 2, I) {}
-	void change(int k, int x) {
+	void change(int k, T x) {
 		for (t[k += n] = x; k /= 2;) t[k] = f(t[k * 2], t[k * 2 + 1]);
 	}
 	T query(int a, int b) {
