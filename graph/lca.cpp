@@ -10,7 +10,7 @@ struct LCA {
 	LCA(graph& g) : time(sz(g)), dist(sz(g)), rmq((dfs(0, 0, g), r)) {}
 
 	void dfs(int s, int e, graph& g) {
-		time[s] = r.size();
+		time[s] = sz(r);
 		r.push_back({dist[s], s});
 		for (auto& u : g[s]) if (u != e) {
 			r.push_back({dist[s], s});
