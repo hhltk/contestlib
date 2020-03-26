@@ -14,7 +14,7 @@ private:
 	}
 public:
 	rolling_hash() {}
-	rolling_hash(string& s_) : s(s_) {
+	rolling_hash(const string& s_) : s(s_) {
 		for (int j = 0; j < 2; ++j) {
 			h[0][j] = s[0];
 			p[0][j] = 1;

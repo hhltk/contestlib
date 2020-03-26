@@ -1,4 +1,5 @@
-template <typename T, T v> struct max_deque {
+template <typename T, T v>
+struct max_deque {
 	int l = 0, r = 0;
 	deque<pair<T, int>> d;
 	void push(T x) {

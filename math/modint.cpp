@@ -1,8 +1,10 @@
-template <typename T> T pow(T a, ll b) {
+template <typename T>
+T pow(T a, ll b) {
 	T r = 1; for ( ; b; b /= 2, a *= a) if (b % 2) r *= a; return r;
 }
 
-template <int MOD> struct modint {
+template <int MOD>
+struct modint {
 private:
 	int v;
 public:

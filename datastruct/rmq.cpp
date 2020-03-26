@@ -2,7 +2,8 @@
 #define all(x) begin(x), end(x)
 using vi = vector<int>;
 
-template <typename T> struct RMQ {
+template <typename T>
+struct RMQ {
 	vector<vi> spr;
 	vector<T> v;
 
