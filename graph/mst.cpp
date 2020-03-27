@@ -5,6 +5,7 @@ struct edge {
 	}
 };
 
+// source: own
 pair<ll, vector<vector<pair<int, int>>>> create_mst(vector<edge>& edg, int n) {
 	sort(edg.begin(), edg.end());
 	vector<vector<pair<int, int>>> g(n);

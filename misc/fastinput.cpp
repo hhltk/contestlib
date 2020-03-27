@@ -1,4 +1,4 @@
-// from kactl
+// source: kactl
 struct Reader {
 	char buf[1 << 20];
 	int it = 0, n = 0;

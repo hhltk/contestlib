@@ -1,3 +1,4 @@
+// source: ksun48
 struct info {
 	int su, mi;
 };

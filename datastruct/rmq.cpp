@@ -2,6 +2,7 @@
 #define all(x) begin(x), end(x)
 using vi = vector<int>;
 
+// source: benq
 template <typename T>
 struct RMQ {
 	vector<vi> spr;

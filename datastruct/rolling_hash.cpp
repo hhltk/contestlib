@@ -4,6 +4,7 @@ using mint = modint<MOD>;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int A[2] = {uniform_int_distribution<int>(1, MOD)(rng), uniform_int_distribution<int>(1, MOD)(rng)};
 
+// source: own
 struct rolling_hash {
 private:
 	string s;

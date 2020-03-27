@@ -1,8 +1,8 @@
 using pii = pair<int, int>;
 using graph = vector<vi>;
 
+// source: kactl
 // O(1) query after O(N \log N) preprocessing
-
 struct LCA {
 	int T = 0;
 	vi time, dist;

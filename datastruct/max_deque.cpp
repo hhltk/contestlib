@@ -1,3 +1,4 @@
+// source: benq
 template <typename T, T v>
 struct max_deque {
 	int l = 0, r = 0;
