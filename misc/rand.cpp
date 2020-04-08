@@ -3,5 +3,5 @@ mt19937 rng((unsigned int) chrono::steady_clock::now().time_since_epoch().count(
 
 template<typename T>
 int rand() {
-	uniform_int_distribution<T>()(rng);
+	return uniform_int_distribution<T>()(rng);
 }
