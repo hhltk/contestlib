@@ -1,7 +1,7 @@
 #define sz(x) (int) x.size()
 #define all(x) begin(x), end(x)
 
-// source: benq
+// source: benq, own
 template <typename T>
 struct RMQ {
 	vector<vector<T>> spr;
