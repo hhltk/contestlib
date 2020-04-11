@@ -5,6 +5,8 @@ int rand() {
 	return uniform_int_distribution<T>()(rng);
 }
 
+
+// source: mango_lassi
 struct Treap {
 	Treap *l, *r;
 	int prior, sz, v;
