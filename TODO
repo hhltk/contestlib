@@ -8,3 +8,4 @@
  - matrix utilities
  - string algorithms: kmp, suffix array, suffix tree?, manacher
  - geometry?
+ - convex hull trick, lichao tree
