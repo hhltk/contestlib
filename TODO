@@ -1,0 +1,10 @@
+ - lca with binary lifting
+ - more segment trees
+ - segment tree beats?
+ - tree algorithms like block-cut decomposition, hld, cd
+ - eulerian and hamiltonian paths
+ - basic max flow like ford-fulkerson
+ - more advanced max flows (dinic)
+ - matrix utilities
+ - string algorithms: kmp, suffix array, suffix tree?, manacher
+ - geometry?
