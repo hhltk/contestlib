@@ -6,7 +6,7 @@ int rand() {
 }
 
 
-// source: mango_lassi
+// source: cses.fi/ioi16/list, cses.fi/alo20/list, mango_lassi
 struct Treap {
 	Treap *l, *r;
 	int prior, sz, v;
