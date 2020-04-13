@@ -1,4 +1,4 @@
-// source: https://github.com/anroysko/contestlib/blob/master/src/graph/djikstra/code.cpp
+// source: mango_lassi
 pair<vector<ll>, vector<vector<int>>> dijkstra(int s, vector<vector<pair<int, int>>>& g) {
 	const ll INF = 1e18;
 	vector<ll> dist(g.size(), INF);
