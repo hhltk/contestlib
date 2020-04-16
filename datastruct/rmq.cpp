@@ -2,7 +2,7 @@
 #define all(x) begin(x), end(x)
 using vi = vector<int>;
 
-// source: benq
+// source: own, benq
 template <typename T>
 struct RMQ {
 	vector<vi> spr;
@@ -18,11 +18,10 @@ struct RMQ {
 		}
 	}
 
-	int lvl(int x) { return 31 - __builtin_clz(x); }
 	int combine(int a, int b) { return v[a] <= v[b] ? a : b; }
 
 	int get(int l, int r) {
-		int d = lvl(r - l + 1);
+		int d = 31 - __builtin_clz(r - l + 1);
 		return combine(spr[d][l], spr[d][r - (1 << d) + 1]);
 	}
 	T getval(int l, int r) { return v[get(l, r)]; }
