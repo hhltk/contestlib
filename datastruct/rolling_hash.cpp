@@ -6,7 +6,7 @@ const int A[2] = {uniform_int_distribution<int>(1, MOD)(rng),
 		  uniform_int_distribution<int>(1, MOD)(rng)};
 
 struct rolling_hash {
-		private:
+private:
 	string s;
 	vector<array<mint, 2>> h, p;
 	int get(int a, int b, int c) {
@@ -14,7 +14,7 @@ struct rolling_hash {
 		return int(h[b][c] - h[a - 1][c] * p[b - a + 1][c]);
 	}
 
-		public:
+public:
 	rolling_hash() {}
 	rolling_hash(const string &s_) : s(s_) {
 		for (int j = 0; j < 2; ++j) {
