@@ -7,9 +7,11 @@ struct DSU {
 	int find(int s) { return p[s] < 0 ? s : p[s] = find(p[s]); }
 	int size(int s) { return -p[find(s)]; }
 	bool unite(int a, int b) {
-		a = find(a); b = find(b);
+		a = find(a);
+		b = find(b);
 		if (a != b) {
-			if (p[b] < p[a]) swap(a, b);
+			if (p[b] < p[a])
+				swap(a, b);
 			p[a] += p[b];
 			p[b] = a;
 			sz--;

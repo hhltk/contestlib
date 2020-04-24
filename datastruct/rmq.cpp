@@ -1,15 +1,15 @@
-#define sz(x) (int) x.size()
+#define sz(x) (int)x.size()
 #define all(x) begin(x), end(x)
 using vi = vector<int>;
 
 // source: own, benq
-template <typename T>
-struct RMQ {
+template <typename T> struct RMQ {
 	vector<vi> spr;
 	vector<T> v;
 
-	RMQ(const vector<T>& v_) : v(v_) {
-		spr = {vi(sz(v))}; iota(all(spr[0]), 0);
+	RMQ(const vector<T> &v_) : v(v_) {
+		spr = {vi(sz(v))};
+		iota(all(spr[0]), 0);
 		for (int j = 1; (1 << j) <= sz(v); ++j) {
 			spr.push_back(vi(sz(v) - (1 << j) + 1));
 			for (int i = 0; i < sz(spr[j]); ++i) {
