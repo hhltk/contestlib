@@ -8,14 +8,15 @@ pair<ll, graph> create_mst(vector<pair<int, pair<int, int>>> edg, int n) {
 	graph g(n);
 	DSU dsu(n);
 	ll r = 0;
-	for (auto& [w, x] : edg) {
-		auto& [a, b] = x;
+	for (auto &[w, x] : edg) {
+		auto &[a, b] = x;
 		if (dsu.unite(a, b)) {
 			r += w;
 			g[a].emplace_back(b, w);
 			g[b].emplace_back(a, w);
 		}
 	}
-	if (dsu.sz != 1) r = -1;
+	if (dsu.sz != 1)
+		r = -1;
 	return {r, g};
 }
