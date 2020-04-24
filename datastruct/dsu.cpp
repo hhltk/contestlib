@@ -1,4 +1,4 @@
-// source: kactl
+// source: kactl, own
 struct DSU {
 	int sz;
 	vector<int> p;

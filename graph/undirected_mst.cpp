@@ -2,7 +2,6 @@ using ll = long long;
 using graph = vector<vector<pair<int, int>>>;
 
 // returns -1 if there is no mst
-// source: own
 pair<ll, graph> create_mst(vector<pair<int, pair<int, int>>> edg, int n) {
 	sort(edg.begin(), edg.end());
 	graph g(n);

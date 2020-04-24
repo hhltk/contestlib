@@ -1,4 +1,3 @@
-// source: own
 vector<ll> dijkstra(int s, vector<vector<pair<int, int>>> &g) {
 	const ll INF = 1e18;
 	vector<ll> dist(g.size(), INF);

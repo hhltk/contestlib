@@ -1,4 +1,3 @@
-// source: own
 template <typename T> struct Tree {
 	int n; // has to be a power of 2
 	T I;

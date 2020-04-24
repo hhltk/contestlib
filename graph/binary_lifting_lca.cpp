@@ -2,7 +2,6 @@ using vi = vector<int>;
 using graph = vector<vi>;
 #define sz(x) (int)x.size()
 
-// source: own
 // O(\log N) query after O(N \log N) preprocessing
 struct LCA {
 	int k;
