@@ -10,15 +10,14 @@ template <typename T> struct minmaxdeque {
 		return (max_mode && a <= b) || (!max_mode && b <= a);
 	}
 	void push(T x) {
-		while (d.size() && compare(d.back().first, x))
-			d.pop_back();
+		while (d.size() && compare(d.back().first, x)) d.pop_back();
 		d.push_back({x, r++});
 	}
 	void pop() {
-		if (d.front().second == l++)
-			d.pop_front();
+		if (d.front().second == l++) d.pop_front();
 	}
 	T get() {
-		return d.size() ? d.front().first : (max_mode ? 0 : numeric_limits<T>::max());
+		return d.size() ? d.front().first
+				: (max_mode ? 0 : numeric_limits<T>::max());
 	}
 };

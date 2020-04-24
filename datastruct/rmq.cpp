@@ -13,7 +13,9 @@ template <typename T> struct RMQ {
 		for (int j = 1; (1 << j) <= sz(v); ++j) {
 			spr.push_back(vi(sz(v) - (1 << j) + 1));
 			for (int i = 0; i < sz(spr[j]); ++i) {
-				spr[j][i] = combine(spr[j - 1][i], spr[j - 1][i + (1 << (j - 1))]);
+				spr[j][i] =
+				    combine(spr[j - 1][i],
+					    spr[j - 1][i + (1 << (j - 1))]);
 			}
 		}
 	}

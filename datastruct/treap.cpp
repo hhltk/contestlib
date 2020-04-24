@@ -1,4 +1,5 @@
-mt19937 rng((unsigned int)chrono::steady_clock::now().time_since_epoch().count());
+mt19937
+    rng((unsigned int)chrono::steady_clock::now().time_since_epoch().count());
 
 template <typename T> int rand() { return uniform_int_distribution<T>()(rng); }
 
@@ -14,22 +15,17 @@ struct Treap {
 	void update() { sz = 1 + getsz(l) + getsz(r); }
 
 	static Treap *merge(Treap *a, Treap *b) {
-		if (a)
-			a->push();
-		if (b)
-			b->push();
-		if (!a || !b)
-			return (a ? a : b);
+		if (a) a->push();
+		if (b) b->push();
+		if (!a || !b) return (a ? a : b);
 
 		Treap *r;
 		if (a->prior < b->prior) {
-			if (a->r)
-				a->r->push();
+			if (a->r) a->r->push();
 			a->r = merge(a->r, b);
 			r = a;
 		} else {
-			if (b->l)
-				b->l->push();
+			if (b->l) b->l->push();
 			b->l = merge(a, b->l);
 			r = b;
 		}
@@ -38,8 +34,7 @@ struct Treap {
 	}
 
 	static pair<Treap *, Treap *> split(Treap *a, int k) {
-		if (!a)
-			return {0, 0};
+		if (!a) return {0, 0};
 		a->push();
 		int al = a->l ? a->l->sz : 0;
 		Treap *r;

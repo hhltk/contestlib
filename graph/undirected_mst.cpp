@@ -15,7 +15,6 @@ pair<ll, graph> create_mst(vector<pair<int, pair<int, int>>> edg, int n) {
 			g[b].emplace_back(a, w);
 		}
 	}
-	if (dsu.sz != 1)
-		r = -1;
+	if (dsu.sz != 1) r = -1;
 	return {r, g};
 }

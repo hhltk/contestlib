@@ -1,8 +1,7 @@
 template <typename T> T pow(T a, ll b) {
 	T r = 1;
 	for (; b; b /= 2, a *= a)
-		if (b % 2)
-			r *= a;
+		if (b % 2) r *= a;
 	return r;
 }
 
@@ -11,8 +10,7 @@ template <int MOD> struct modint {
 	int v;
 	modint() : v(0) {}
 	modint(ll x) : v(x % MOD) {
-		if (v < 0)
-			v += MOD;
+		if (v < 0) v += MOD;
 	}
 	explicit operator int() const { return v; }
 	explicit operator ll() const { return v; }
@@ -34,14 +32,12 @@ template <int MOD> struct modint {
 
 	modint &operator+=(const modint &a) {
 		v += a.v;
-		if (v >= MOD)
-			v -= MOD;
+		if (v >= MOD) v -= MOD;
 		return *this;
 	}
 	modint &operator-=(const modint &a) {
 		v -= a.v;
-		if (v < 0)
-			v += MOD;
+		if (v < 0) v += MOD;
 		return *this;
 	}
 	modint &operator*=(const modint &a) {

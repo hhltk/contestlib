@@ -10,8 +10,7 @@ struct DSU {
 		a = find(a);
 		b = find(b);
 		if (a != b) {
-			if (p[b] < p[a])
-				swap(a, b);
+			if (p[b] < p[a]) swap(a, b);
 			p[a] += p[b];
 			p[b] = a;
 			sz--;
