@@ -1,6 +1,6 @@
 Files are formatted with clang-format.
 
-The following options for clang-format are used:
+The following options are used for clang-format:
 
 BasedOnStyle: LLVM
 IndentWidth: 8
