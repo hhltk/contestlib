@@ -9,3 +9,4 @@ AllowShortIfStatementsOnASingleLine: WithoutElse
 AccessModifierOffset: -8
 AllowShortFunctionsOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
+ColumnLimit: 0
