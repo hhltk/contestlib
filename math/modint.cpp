@@ -25,9 +25,10 @@ template <int MOD> struct modint {
 		return in;
 	}
 
+	// only works if MOD is prime
 	modint inv() const {
 		return pow(*this, MOD - 2);
-	} // only works if MOD is prime
+	}
 	friend modint inv(const modint &x) { return x.inv(); }
 
 	modint &operator+=(const modint &a) {

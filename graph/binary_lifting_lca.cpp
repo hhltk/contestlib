@@ -8,8 +8,7 @@ struct LCA {
 	vi dep;
 	vector<vi> spr;
 
-	LCA(graph &g)
-	    : k(31 - __builtin_clz(sz(g))), dep(sz(g)), spr(sz(g), vi(k + 1)) {
+	LCA(graph &g) : k(31 - __builtin_clz(sz(g))), dep(sz(g)), spr(sz(g), vi(k + 1)) {
 		dfs(0, 0, g);
 	}
 

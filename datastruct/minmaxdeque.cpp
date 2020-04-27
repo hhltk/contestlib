@@ -1,5 +1,6 @@
 // source: benq, own
-template <typename T> struct minmaxdeque {
+template <typename T>
+struct minmaxdeque {
 	bool max_mode;
 	int l = 0, r = 0;
 	deque<pair<T, int>> d;
@@ -17,7 +18,6 @@ template <typename T> struct minmaxdeque {
 		if (d.front().second == l++) d.pop_front();
 	}
 	T get() {
-		return d.size() ? d.front().first
-				: (max_mode ? 0 : numeric_limits<T>::max());
+		return d.size() ? d.front().first : (max_mode ? 0 : numeric_limits<T>::max());
 	}
 };

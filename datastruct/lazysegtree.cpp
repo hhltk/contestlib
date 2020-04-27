@@ -7,8 +7,7 @@ struct SegmentTree {
 		if (y <= l || r <= x) return 0;
 		push(s);
 		int m = (l + r) / 2;
-		return max(query(s * 2, l, r, x, m),
-			   query(s * 2 + 1, l, r, m, y));
+		return max(query(s * 2, l, r, x, m), query(s * 2 + 1, l, r, m, y));
 	}
 	void change(int s, int l, int r, int x, int y, int k) {
 		if (x <= l && r <= y) return apply(s, k);

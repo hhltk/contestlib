@@ -1,6 +1,5 @@
 // source: mango_lassi
-pair<vector<ll>, vector<vector<int>>>
-dijkstra(int s, vector<vector<pair<int, int>>> &g) {
+pair<vector<ll>, vector<vector<int>>> dijkstra(int s, vector<vector<pair<int, int>>> &g) {
 	const ll INF = 1e18;
 	vector<ll> dist(g.size(), INF);
 	vector<vector<int>> r(g.size());

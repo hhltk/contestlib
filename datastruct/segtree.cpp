@@ -1,10 +1,12 @@
-template <typename T> struct Tree {
+template <typename T>
+struct Tree {
 	int n; // has to be a power of 2
 	T I;
 	function<T(T, T)> f;
 	vector<T> t;
-	Tree(int _n, T _I, function<T(T, T)> _f)
-	    : n(_n), I(_I), f(_f), t(n * 2, I) {}
+
+	Tree(int _n, T _I, function<T(T, T)> _f) : n(_n), I(_I), f(_f), t(n * 2, I) {}
+
 	void change(int k, T x) {
 		for (t[k += n] = x; k /= 2;) t[k] = f(t[k * 2], t[k * 2 + 1]);
 	}
