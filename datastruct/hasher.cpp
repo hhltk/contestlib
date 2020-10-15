@@ -1,37 +1,69 @@
-static const int MOD = 1e9 + 7;
-using mint = modint<MOD>;
+namespace hasher {
+const int MOD = 1e9 + 7;
+using hash_t = modint<MOD>;
 
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-const int A[2] = {uniform_int_distribution<int>(1, MOD)(rng),
-                  uniform_int_distribution<int>(1, MOD)(rng)};
+struct HashPair {
+    hash_t x, y;
+    HashPair() : x(0), y(0) {}
+    HashPair(hash_t u) : x(u), y(u) {}
+    HashPair(hash_t x, hash_t y) : x(x), y(y) {}
 
-struct rolling_hash {
-  private:
-    string s;
-    vector<array<mint, 2>> h, p;
-    int get(int a, int b, int c) {
-        if (!a)
-            return int(h[b][c]);
-        return int(h[b][c] - h[a - 1][c] * p[b - a + 1][c]);
+    HashPair &operator*=(const HashPair &oth) {
+        x *= oth.x;
+        y *= oth.y;
+        return *this;
     }
-
-  public:
-    rolling_hash() {
+    HashPair &operator+=(const HashPair &oth) {
+        x += oth.x;
+        y += oth.y;
+        return *this;
     }
-    rolling_hash(const string &s_) : s(s_) {
-        for (int j = 0; j < 2; ++j) {
-            h[0][j] = s[0];
-            p[0][j] = 1;
-            for (int i = 1; i < static_cast<int>(s.size()); ++i) {
-                h[i][j] = h[i - 1][j] * A[j] + s[i];
-                p[i][j] = p[i - 1][j] * A[j];
-            }
-        }
+    HashPair &operator-=(const HashPair &oth) {
+        x -= oth.x;
+        y -= oth.y;
+        return *this;
     }
-    pair<int, int> get(int a, int b) {
-        return {get(a, b, 0), get(a, b, 1)};
+    friend HashPair operator*(const HashPair &lhs, const HashPair &rhs) {
+        return HashPair(lhs) *= rhs;
     }
-    pair<int, int> get() {
-        return get(0, s.size() - 1);
+    friend HashPair operator+(const HashPair &lhs, const HashPair &rhs) {
+        return HashPair(lhs) += rhs;
+    }
+    friend HashPair operator-(const HashPair &lhs, const HashPair &rhs) {
+        return HashPair(lhs) -= rhs;
     }
 };
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+auto dist = uniform_int_distribution<int>(MOD * 0.1, MOD * 0.9);
+
+HashPair bases(hash_t(dist(rng)), hash_t(dist(rng)));
+
+template <class T> HashPair calc(const T &x) {
+    HashPair r;
+    for (auto &u : x)
+        r = r * bases + HashPair(hash_t(u));
+    return r;
+}
+
+template <class T> vector<HashPair> calc_vector(const T &x) {
+    vector<HashPair> r(1);
+    for (auto &u : x)
+        r.push_back(r.back() * bases + HashPair(hash_t(u)));
+    return r;
+}
+
+vector<HashPair> pows{bases};
+
+void ensure_pows(int n) {
+    if (int(pows.size()) >= n)
+        return;
+    while (int(pows.size()) < n)
+        pows.push_back(pows.back() * bases);
+}
+
+HashPair range(const vector<HashPair> &k, int l, int r) {
+    ensure_pows(r - l + 1);
+    return k[r + 1] - k[l] * pows[r - l];
+}
+} // namespace hasher
