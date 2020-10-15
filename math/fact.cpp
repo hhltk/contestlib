@@ -1,18 +1,21 @@
 vector<mint> fact, ifact;
 
-void init(int N = int(1e6)) {
-    fact.resize(N + 1);
-    ifact.resize(N + 1);
-    fact[0] = 1;
-    for (int i = 1; i <= N; ++i)
-        fact[i] = fact[i - 1] * i;
-    ifact[N] = 1 / fact[N];
-    for (int i = N; i > 0; --i)
-        ifact[i - 1] = i * ifact[i];
+void verify_facts(int n) {
+    if (int(fact.size()) >= n)
+        return;
+    if (fact.empty()) {
+        fact.push_back(1);
+        ifact.push_back(1);
+    }
+    while (int(fact.size()) < n) {
+        fact.push_back(fact.back() * fact.size());
+        ifact.push_back(1 / fact.back());
+    }
 }
 
 mint choose(int a, int b) {
     if (a < b || b < 0)
         return 0;
+    verify_facts(a);
     return fact[a] * ifact[b] * ifact[a - b];
 }
