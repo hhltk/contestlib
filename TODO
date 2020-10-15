@@ -9,3 +9,5 @@
  - string algorithms: kmp, suffix array, suffix tree?, manacher
  - geometry?
  - convex hull trick, lichao tree
+
+ - move casts to static_cast
