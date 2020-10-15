@@ -1,3 +1,6 @@
+// FIXME: Implement FastInput & FastOutput and make
+// function the same way as std::cin and std::cout
+
 // source: kactl, own
 struct Reader {
     char buf[1 << 20];
