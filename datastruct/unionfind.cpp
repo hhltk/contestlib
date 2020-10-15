@@ -2,8 +2,7 @@
 struct UnionFind {
     int cmp_cnt;
     vector<int> p;
-    UnionFind(int n) : cmp_cnt(n), p(n, -1) {
-    }
+    UnionFind(int n) : cmp_cnt(n), p(n, -1) {}
 
     bool same_set(int a, int b) {
         return find(a) == find(b);

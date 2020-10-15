@@ -1,8 +1,7 @@
 struct SegmentTree {
     int n;
     vector<int> p, l;
-    SegmentTree(int n) : n(n), p(n * 4), l(n * 4) {
-    }
+    SegmentTree(int n) : n(n), p(n * 4), l(n * 4) {}
     int query(int s, int l, int r, int x, int y) {
         if (x <= l && r <= y)
             return p[s];

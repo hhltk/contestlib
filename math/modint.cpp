@@ -9,8 +9,7 @@ template <typename T> T pow(T a, ll b) {
 // source: ecnerwala, own, benq
 template <int MOD> struct ModInt {
     int v;
-    ModInt() : v(0) {
-    }
+    ModInt() : v(0) {}
     ModInt(ll x) : v(x % MOD) {
         if (v < 0)
             v += MOD;

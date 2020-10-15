@@ -6,8 +6,7 @@ template <typename T> struct Tree {
     function<T(T, T)> f;
     vector<T> t;
 
-    Tree(int n, T I, function<T(T, T)> f) : n(n), I(I), f(f), t(n * 2, I) {
-    }
+    Tree(int n, T I, function<T(T, T)> f) : n(n), I(I), f(f), t(n * 2, I) {}
 
     void change(int k, T x) {
         for (t[k += n] = x; k /= 2;)
