@@ -1,3 +1,4 @@
+namespace comb {
 vector<mint> fact, ifact;
 
 void ensure_facts(int n) {
@@ -19,3 +20,14 @@ mint choose(int a, int b) {
     ensure_facts(a);
     return fact[a] * ifact[b] * ifact[a - b];
 }
+
+mint factorial(int a) {
+    ensure_facts(a);
+    return fact[a];
+}
+
+mint inv_factorial(int a) {
+    ensure_facts(a);
+    return ifact[a];
+}
+} // namespace comb
