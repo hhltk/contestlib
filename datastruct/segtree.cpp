@@ -1,11 +1,12 @@
+// Basic segment tree. Takes the size of tree, an identity value
+// and a binary function as parameters
 template <typename T> struct Tree {
-    int n; // has to be a power of 2
+    int n; // Has to be a power of 2
     T I;
     function<T(T, T)> f;
     vector<T> t;
 
-    Tree(int _n, T _I, function<T(T, T)> _f)
-        : n(_n), I(_I), f(_f), t(n * 2, I) {
+    Tree(int n, T I, function<T(T, T)> f) : n(n), I(I), f(f), t(n * 2, I) {
     }
 
     void change(int k, T x) {
