@@ -1,6 +1,6 @@
 vector<mint> fact, ifact;
 
-void verify_facts(int n) {
+void ensure_facts(int n) {
     if (int(fact.size()) >= n)
         return;
     if (fact.empty()) {
@@ -16,6 +16,6 @@ void verify_facts(int n) {
 mint choose(int a, int b) {
     if (a < b || b < 0)
         return 0;
-    verify_facts(a);
+    ensure_facts(a);
     return fact[a] * ifact[b] * ifact[a - b];
 }
