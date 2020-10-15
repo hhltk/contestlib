@@ -7,11 +7,11 @@ template <typename T> T pow(T a, ll b) {
 }
 
 // source: ecnerwala, own, benq
-template <int MOD> struct modint {
+template <int MOD> struct ModInt {
     int v;
-    modint() : v(0) {
+    ModInt() : v(0) {
     }
-    modint(ll x) : v(x % MOD) {
+    ModInt(ll x) : v(x % MOD) {
         if (v < 0)
             v += MOD;
     }
@@ -22,56 +22,56 @@ template <int MOD> struct modint {
         return v;
     }
 
-    friend ostream &operator<<(ostream &out, const modint &a) {
+    friend ostream &operator<<(ostream &out, const ModInt &a) const {
         return out << int(a);
     }
-    friend istream &operator>>(istream &in, modint &a) {
+    friend istream &operator>>(istream &in, ModInt &a) {
         ll x;
         in >> x;
-        a = modint(x);
+        a = ModInt(x);
         return in;
     }
 
     // only works if MOD is prime
-    modint inv() const {
+    ModInt inv() const {
         return pow(*this, MOD - 2);
     }
-    friend modint inv(const modint &x) {
+    friend ModInt inv(const ModInt &x) {
         return x.inv();
     }
 
-    modint &operator+=(const modint &a) {
+    ModInt &operator+=(const ModInt &a) {
         v += a.v;
         if (v >= MOD)
             v -= MOD;
         return *this;
     }
-    modint &operator-=(const modint &a) {
+    ModInt &operator-=(const ModInt &a) {
         v -= a.v;
         if (v < 0)
             v += MOD;
         return *this;
     }
-    modint &operator*=(const modint &a) {
+    ModInt &operator*=(const ModInt &a) {
         v = ll(v) * ll(a.v) % MOD;
         return *this;
     }
-    modint &operator/=(const modint &a) {
+    ModInt &operator/=(const ModInt &a) {
         return *this *= a.inv();
     }
 
-    friend modint operator+(const modint &a, const modint &b) {
-        return modint(a) += b;
+    friend ModInt operator+(const ModInt &a, const ModInt &b) {
+        return ModInt(a) += b;
     }
-    friend modint operator-(const modint &a, const modint &b) {
-        return modint(a) -= b;
+    friend ModInt operator-(const ModInt &a, const ModInt &b) {
+        return ModInt(a) -= b;
     }
-    friend modint operator*(const modint &a, const modint &b) {
-        return modint(a) *= b;
+    friend ModInt operator*(const ModInt &a, const ModInt &b) {
+        return ModInt(a) *= b;
     }
-    friend modint operator/(const modint &a, const modint &b) {
-        return modint(a) /= b;
+    friend ModInt operator/(const ModInt &a, const ModInt &b) {
+        return ModInt(a) /= b;
     }
 };
 
-using mint = modint<MOD>;
+using mint = ModInt<MOD>;
