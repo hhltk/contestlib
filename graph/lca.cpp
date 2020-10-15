@@ -1,18 +1,15 @@
-using pii = pair<int, int>;
-using graph = vector<vi>;
-
 // source: kactl
-// O(1) query after O(N \log N) preprocessing
+// O(n log n) preprocessing, O(1) queries
 struct LCA {
     int T = 0;
-    vi time, dist;
-    vector<pii> r;
-    RMQ<pii> rmq;
+    vector<int> time, dist;
+    vector<pair<int, int>> r;
+    RMQ<pair<int, int>> rmq;
 
-    LCA(graph &g) : time(sz(g)), dist(sz(g)), rmq((dfs(0, 0, g), r)) {
+    LCA(vector<vector<int>> &g) : time(g.size())), dist(g.size()), rmq((dfs(0, 0, g), r)) {
     }
 
-    void dfs(int s, int e, graph &g) {
+    void dfs(int s, int e, vector<vector<int>> &g) {
         time[s] = sz(r);
         r.push_back({dist[s], s});
         for (auto &u : g[s])
@@ -23,7 +20,7 @@ struct LCA {
             }
     }
     int query(int a, int b) {
-        a = time[a], b = time[b];
-        return rmq.getval(min(a, b), max(a, b)).second;
+        auto [l, r] = minmax(time[a], time[b]);
+        return rmq.getmin(l, r).second;
     }
 };
