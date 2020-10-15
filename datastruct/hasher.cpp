@@ -1,6 +1,6 @@
 namespace hasher {
 const int MOD = 1e9 + 7;
-using hash_t = modint<MOD>;
+using hash_t = ModInt<MOD>;
 
 struct HashPair {
     hash_t x, y;
