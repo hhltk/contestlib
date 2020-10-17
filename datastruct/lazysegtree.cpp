@@ -1,42 +1,43 @@
 struct SegmentTree {
     int n;
-    vector<int> p, l;
+    vector<long> p, l;
     SegmentTree(int n) : n(n), p(n * 4), l(n * 4) {}
-    int query(int s, int l, int r, int x, int y) {
-        if (x <= l && r <= y)
-            return p[s];
+    long query(int s, int l, int r, int x, int y) {
         if (y <= l || r <= x)
             return 0;
-        push(s);
-        int m = (l + r) / 2;
-        return max(query(s * 2, l, r, x, m), query(s * 2 + 1, l, r, m, y));
+        if (l <= x && y <= r)
+            return p[s];
+        push(s, y - x);
+        int m = (x + y) / 2;
+        return query(s * 2, l, r, x, m) + query(s * 2 + 1, l, r, m, y);
     }
-    void change(int s, int l, int r, int x, int y, int k) {
-        if (x <= l && r <= y)
-            return apply(s, k);
+    void change(int s, int l, int r, int x, int y, long k) {
         if (y <= l || r <= x)
             return;
-        push(s);
-        int m = (l + r) / 2;
+        if (l <= x && y <= r)
+            return apply(s, y - x, k);
+        push(s, y - x);
+        int m = (x + y) / 2;
         change(s * 2, l, r, x, m, k);
         change(s * 2 + 1, l, r, m, y, k);
         pull(s);
     }
-    void push(int s) {
-        apply(s * 2, l[s]);
-        apply(s * 2 + 1, l[s]);
+    void push(int s, int len) {
+        apply(s * 2, len / 2, l[s]);
+        apply(s * 2 + 1, len / 2, l[s]);
+        l[s] = 0;
     }
-    void apply(int s, int x) {
-        p[s] += x;
+    void apply(int s, int len, long x) {
+        p[s] += x * len;
         l[s] += x;
     }
     void pull(int s) {
-        p[s] = max(p[s * 2], p[s * 2 + 1]);
+        p[s] = p[s * 2] + p[s * 2 + 1];
     }
-    int query(int l, int r) {
+    long query(int l, int r) {
         return query(1, l, r, 0, n);
     }
-    void change(int l, int r, int k) {
+    void change(int l, int r, long k) {
         change(1, l, r, 0, n, k);
     }
 };
