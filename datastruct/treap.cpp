@@ -17,7 +17,7 @@ struct Treap {
   void push() {}
 
   void update() {
-    sz = 1 + (l ? l->sz : 0) + (r ? l->sz : 0);
+    sz = 1 + (l ? l->sz : 0) + (r ? r->sz : 0);
   }
 
   static Treap *merge(Treap *a, Treap *b) {
