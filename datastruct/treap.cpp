@@ -17,29 +17,29 @@ struct Treap {
   void push() {}
 
   void update() {
-    sz = 1 + (l ? l->sz : 0) + (r ? r->sz : 0);
+    sz = 1 + (l != nullptr ? l->sz : 0) + (r != nullptr ? r->sz : 0);
   }
 
   static Treap *merge(Treap *a, Treap *b) {
-    if (a) {
+    if (a != nullptr) {
       a->push();
     }
-    if (b) {
+    if (b != nullptr) {
       b->push();
     }
-    if (!a || !b) {
-      return (a ? a : b);
+    if ((a == nullptr) || (b == nullptr)) {
+      return (a != nullptr ? a : b);
     }
 
     Treap *r;
     if (a->prior < b->prior) {
-      if (a->r) {
+      if (a->r != nullptr) {
         a->r->push();
       }
       a->r = merge(a->r, b);
       r = a;
     } else {
-      if (b->l) {
+      if (b->l != nullptr) {
         b->l->push();
       }
       b->l = merge(a, b->l);
@@ -50,20 +50,19 @@ struct Treap {
   }
 
   static pair<Treap *, Treap *> split(Treap *a, int k) {
-    if (!a) {
+    if (a == nullptr) {
       return {0, 0};
     }
     a->push();
-    int al = a->l ? a->l->sz : 0;
+    int al = a->l != nullptr ? a->l->sz : 0;
     Treap *r;
     if (al >= k) {
       tie(r, a->l) = split(a->l, k);
       a->update();
       return {r, a};
-    } else {
-      tie(a->r, r) = split(a->r, k - al - 1);
-      a->update();
-      return {a, r};
     }
+    tie(a->r, r) = split(a->r, k - al - 1);
+    a->update();
+    return {a, r};
   }
 };

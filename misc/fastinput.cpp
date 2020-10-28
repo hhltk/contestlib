@@ -19,14 +19,14 @@ struct Reader {
 } reader;
 int next_int() {
   char c = reader();
-  while (c != '-' && !isdigit(c)) {
+  while (c != '-' && (isdigit(c) == 0)) {
     c = reader();
   }
   if (c == '-') {
     return -next_int();
   }
   int a = c - '0';
-  while (isdigit(c = reader())) {
+  while (isdigit(c = reader()) != 0) {
     a = a * 10 + c - '0';
   }
   return a;

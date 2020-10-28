@@ -19,7 +19,7 @@ struct Dinic {
     queue<int> q;
     q.push(source);
     lvl[source] = 0;
-    while (q.size()) {
+    while (!q.empty()) {
       int s = q.front();
       q.pop();
       for (auto &[u, id] : g[s]) {
@@ -39,7 +39,7 @@ struct Dinic {
     }
     ll r = 0;
     for (int &ct = counter[node]; ct < int(g[node].size()); ++ct) {
-      if (!x) {
+      if (x == 0) {
         break;
       }
       auto [u, id] = g[node][ct];
@@ -51,7 +51,7 @@ struct Dinic {
       w[id ^ 1] += f;
       x -= f;
       r += f;
-      if (w[id] && x == 0) {
+      if ((w[id] != 0) && x == 0) {
         return r;
       }
     }
@@ -65,7 +65,7 @@ struct Dinic {
       vector<int> counter(g.size());
       long long f = dfs(source, sink, numeric_limits<ll>::max(), counter, lvl);
       flow += f;
-      if (!f) {
+      if (f == 0) {
         break;
       }
     }

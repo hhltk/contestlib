@@ -12,7 +12,7 @@ template <typename T> struct Tree {
   Tree(int n, T I, function<T(T, T)> f) : n(n), I(I), f(f), t(n * 2, I) {}
 
   void change(int k, T x) {
-    for (t[k += n] = x; k /= 2;) {
+    for (t[k += n] = x; (k /= 2) != 0;) {
       t[k] = f(t[k * 2], t[k * 2 + 1]);
     }
   }
