@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <cctype>
+#include <cstdio>
 using namespace std;
 
 // FIXME: Implement FastInput & FastOutput and make

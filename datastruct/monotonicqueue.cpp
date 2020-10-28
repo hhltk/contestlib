@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <deque>
 using namespace std;
 
 template <class T, class Compare> struct MonotonicQueue {

@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <functional>
+#include <vector>
 using namespace std;
 
 // Basic segment tree. Takes the size of tree, an identity value

@@ -1,9 +1,11 @@
-#include <bits/stdc++.h>
+#include <functional>
+#include <numeric>
+#include <vector>
 using namespace std;
 
 // source: own, Benq
 // O(n log n) preprocessing, O(1) queries
-template <class T, class Comparator = std::less<T>> struct RangeMinimumQuery {
+template <class T, class Comparator = less<T>> struct RangeMinimumQuery {
   vector<vector<int>> spr;
   vector<T> v;
 

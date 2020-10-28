@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 using ll = long long;
 
@@ -49,4 +49,3 @@ struct LCA {
     return a == b ? a : spr[a][0];
   }
 };
-int main() {}
