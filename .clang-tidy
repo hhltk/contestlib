@@ -2,4 +2,5 @@ Checks: '-*,
         readability-braces-around-statements,
         readability-implicit-bool-conversion,
         readability-container-size-empty,
-        readability-else-after-return'
+        readability-else-after-return,
+        modernize-use-emplace'

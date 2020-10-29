@@ -17,10 +17,10 @@ struct LCA {
 
   void dfs(int s, int e, vector<vector<int>> &g) {
     time[s] = int(r.size());
-    r.push_back({dist[s], s});
+    r.emplace_back(dist[s], s);
     for (auto &u : g[s]) {
       if (u != e) {
-        r.push_back({dist[s], s});
+        r.emplace_back(dist[s], s);
         dist[u] = dist[s] + 1;
         dfs(u, s, g);
       }

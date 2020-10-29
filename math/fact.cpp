@@ -11,8 +11,8 @@ void ensure_facts(int n) {
     return;
   }
   if (fact.empty()) {
-    fact.push_back(1);
-    ifact.push_back(1);
+    fact.emplace_back(1);
+    ifact.emplace_back(1);
   }
   while (int(fact.size()) < n) {
     fact.push_back(fact.back() * fact.size());
