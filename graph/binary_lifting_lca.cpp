@@ -9,8 +9,7 @@ struct LCA {
   vector<vector<int>> spr;
 
   LCA(vector<vector<int>> &g)
-      : k(31 - __builtin_clz(g.size())), dep(g.size()),
-        spr(g.size(), vector<int>(k + 1)) {
+      : k(__lg(g.size())), dep(g.size()), spr(g.size(), vector<int>(k + 1)) {
     dfs(0, 0, g);
   }
 
@@ -30,7 +29,8 @@ struct LCA {
   int up(int a, int b) {
     for (int j = k; j >= 0; --j) {
       if (b >= (1 << j)) {
-        a = spr[a][j], b -= 1 << j;
+        a = spr[a][j];
+        b -= 1 << j;
       }
     }
     return a;
@@ -43,7 +43,8 @@ struct LCA {
     a = up(a, dep[a] - dep[b]);
     for (int j = k; j >= 0; --j) {
       if (spr[a][j] != spr[b][j]) {
-        a = spr[a][j], b = spr[b][j];
+        a = spr[a][j];
+        b = spr[b][j];
       }
     }
     return a == b ? a : spr[a][0];
