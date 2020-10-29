@@ -34,13 +34,12 @@ struct Dinic {
     return lvl;
   }
 
-  ll dfs(int node, int sink, ll x, vector<int> &counter,
-         const vector<int> &lvl) {
+  ll dfs(int node, int sink, ll x, vector<int> &c, const vector<int> &lvl) {
     if (node == sink) {
       return x;
     }
     ll r = 0;
-    for (int &ct = counter[node]; ct < int(g[node].size()); ++ct) {
+    for (int &ct = c[node]; ct < int(g[node].size()); ++ct) {
       if (x == 0) {
         break;
       }
@@ -48,7 +47,7 @@ struct Dinic {
       if (w[id] < 0 || lvl[node] + 1 != lvl[u]) {
         continue;
       }
-      ll f = dfs(u, sink, min(x, w[id]), counter, lvl);
+      ll f = dfs(u, sink, min(x, w[id]), c, lvl);
       w[id] -= f;
       w[id ^ 1] += f;
       x -= f;
@@ -62,15 +61,13 @@ struct Dinic {
 
   ll push(int source, int sink) {
     ll flow = 0;
-    while (true) {
+    ll f;
+    do {
       vector<int> lvl = calclvls(source);
-      vector<int> counter(g.size());
-      long long f = dfs(source, sink, numeric_limits<ll>::max(), counter, lvl);
+      vector<int> c(g.size());
+      f = dfs(source, sink, numeric_limits<ll>::max(), c, lvl);
       flow += f;
-      if (f == 0) {
-        break;
-      }
-    }
+    } while (f > 0);
     return flow;
   }
 };
