@@ -3,7 +3,8 @@ using namespace std;
 
 struct SegmentTree {
   int n;
-  vector<long> p, l;
+  vector<long> p;
+  vector<long> l;
   SegmentTree(int n) : n(n), p(n * 4), l(n * 4) {}
   long query(int s, int l, int r, int x, int y) {
     if (y <= l || r <= x) {
