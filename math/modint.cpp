@@ -2,7 +2,8 @@
 using namespace std;
 using ll = long long;
 
-template <typename T> T pow(T a, ll b) {
+template <typename T>
+T pow(T a, ll b) {
 	T r = 1;
 	for (; b; b /= 2, a *= a) {
 		if (b % 2) {
@@ -13,7 +14,8 @@ template <typename T> T pow(T a, ll b) {
 }
 
 // source: ecnerwala, own, benq
-template <int MOD> struct ModInt {
+template <int MOD>
+struct ModInt {
 	int v;
 	ModInt() : v(0) {}
 	ModInt(ll x) : v(x % MOD) {

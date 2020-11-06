@@ -1,6 +1,5 @@
 BasedOnStyle: LLVM
 AllowShortBlocksOnASingleLine: Never
-AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLambdasOnASingleLine: None
 AllowShortLoopsOnASingleLine: false
@@ -8,3 +7,4 @@ AllowShortCaseLabelsOnASingleLine: false
 UseTab: Always
 IndentWidth: 8
 AlignTrailingComments: true
+ColumnLimit: 0

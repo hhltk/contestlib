@@ -7,7 +7,8 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 // source: cses.fi/ioi16/list, cses.fi/alon20/list, mango_lassi
 struct Treap {
-	template <typename T> int rand() {
+	template <typename T>
+	int rand() {
 		return uniform_int_distribution<T>()(rng);
 	}
 
