@@ -8,9 +8,7 @@ struct LCA {
 	vector<int> dep;
 	vector<vector<int>> spr;
 
-	LCA(vector<vector<int>> &g)
-	    : k(__lg(g.size())), dep(g.size()),
-	      spr(g.size(), vector<int>(k + 1)) {
+	LCA(vector<vector<int>> &g) : k(__lg(g.size())), dep(g.size()), spr(g.size(), vector<int>(k + 1)) {
 		dfs(0, 0, g);
 	}
 

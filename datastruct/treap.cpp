@@ -20,8 +20,7 @@ struct Treap {
 	void push() {}
 
 	void update() {
-		sz =
-		    1 + (l != nullptr ? l->sz : 0) + (r != nullptr ? r->sz : 0);
+		sz = 1 + (l != nullptr ? l->sz : 0) + (r != nullptr ? r->sz : 0);
 	}
 
 	static Treap *merge(Treap *a, Treap *b) {

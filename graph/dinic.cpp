@@ -34,8 +34,7 @@ struct Dinic {
 		return lvl;
 	}
 
-	ll dfs(int node, int sink, ll x, vector<int> &c,
-	       const vector<int> &lvl) {
+	ll dfs(int node, int sink, ll x, vector<int> &c, const vector<int> &lvl) {
 		if (node == sink) {
 			return x;
 		}
@@ -66,8 +65,7 @@ struct Dinic {
 		do {
 			vector<int> lvl = calclvls(source);
 			vector<int> c(g.size());
-			f = dfs(source, sink, numeric_limits<ll>::max(), c,
-				lvl);
+			f = dfs(source, sink, numeric_limits<ll>::max(), c, lvl);
 			flow += f;
 		} while (f > 0);
 		return flow;

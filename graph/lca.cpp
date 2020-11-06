@@ -10,10 +10,9 @@ struct LCA {
 	int T = 0;
 	vector<int> time, dist;
 	vector<pair<int, int>> r;
-	RangeMinimumQuery<pair<int, int>> rmq;
+	RMQ<pair<int, int>> rmq;
 
-	LCA(vector<vector<int>> &g)
-	    : time(g.size()), dist(g.size()), rmq((dfs(0, 0, g), r)) {}
+	LCA(vector<vector<int>> &g) : time(g.size()), dist(g.size()), rmq((dfs(0, 0, g), r)) {}
 
 	void dfs(int s, int e, vector<vector<int>> &g) {
 		time[s] = int(r.size());
