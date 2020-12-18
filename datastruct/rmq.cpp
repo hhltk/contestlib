@@ -9,26 +9,26 @@ using namespace std;
 // O(n log n) preprocessing, O(1) queries
 template <class T, class Comparator = less<T>>
 struct RMQ {
-  vector<vector<int>> spr;
-  vector<T> v;
-  RMQ(const vector<T> &v) : v(v) {
-    spr = {vector<int>(sz(v))};
-    iota(spr[0].begin(), spr[0].end(), 0);
-    for (int j = 1; (1 << j) <= sz(v); ++j) {
-      spr.push_back(vector<int>(sz(v) - (1 << j) + 1));
-      for (int i = 0; i < sz(spr[j]); ++i) {
-        spr[j][i] = Comp(spr[j - 1][i], spr[j - 1][i + (1 << (j - 1))]);
-      }
-    }
-  }
-  int Comp(int i, int j) {
-    return Comparator()(v[i], v[j]) ? i : j;
-  }
-  int argmin(int l, int r) {
-    int d = __lg(r - l + 1);
-    return Comp(spr[d][l], spr[d][r - (1 << d) + 1]);
-  }
-  T getmin(int l, int r) {
-    return v[argmin(l, r)];
-  }
+	vector<vector<int>> spr;
+	vector<T> v;
+	RMQ(const vector<T> &v) : v(v) {
+		spr = {vector<int>(sz(v))};
+		iota(spr[0].begin(), spr[0].end(), 0);
+		for (int j = 1; (1 << j) <= sz(v); ++j) {
+			spr.push_back(vector<int>(sz(v) - (1 << j) + 1));
+			for (int i = 0; i < sz(spr[j]); ++i) {
+				spr[j][i] = Comp(spr[j - 1][i], spr[j - 1][i + (1 << (j - 1))]);
+			}
+		}
+	}
+	int Comp(int i, int j) {
+		return Comparator()(v[i], v[j]) ? i : j;
+	}
+	int argmin(int l, int r) {
+		int d = __lg(r - l + 1);
+		return Comp(spr[d][l], spr[d][r - (1 << d) + 1]);
+	}
+	T getmin(int l, int r) {
+		return v[argmin(l, r)];
+	}
 };
