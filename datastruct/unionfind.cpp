@@ -7,11 +7,11 @@ struct UnionFind {
 
 	UnionFind(int n) : p(n, -1) {}
 
-	inline int get(int s) {
+	int get(int s) {
 		return p[s] < 0 ? s : (p[s] = get(p[s]));
 	}
 
-	inline bool unite(int a, int b) {
+	bool unite(int a, int b) {
 		a = get(a);
 		b = get(b);
 		if (a != b) {
