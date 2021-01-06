@@ -20,14 +20,18 @@ struct Tree {
 	}
 	T query(int a, int b) {
 		T r = I;
+		static T buf[128];
+		int bufit = 0;
 		for (a += n, b += n; a <= b; a /= 2, b /= 2) {
 			if (a % 2 == 1) {
-				r = f(t[a++], r);
+				r = f(r, t[a++]);
 			}
 			if (b % 2 == 0) {
-				r = f(r, t[b--]);
+				buf[bufit++] = t[b--];
 			}
 		}
+		for (int i = bufit - 1; i >= 0; --i)
+			r = f(r, buf[i]);
 		return r;
 	}
 };
