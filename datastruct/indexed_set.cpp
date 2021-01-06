@@ -14,15 +14,15 @@ using indexed_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statisti
 
 template<typename T>
 int at_most(indexed_set<pair<T, int>>& t, T k) {
-	return tree.order_of_key({k, INF});
+	return t.order_of_key({k, INF});
 }
 
 template<typename T>
 int at_least(indexed_set<pair<T, int>>& t, T k) {
-	return tree.size() - at_most(t, k - 1);
+	return t.size() - at_most(t, k - 1);
 }
 
 template<typename T>
 int range_sum(indexed_set<pair<T, int>>& t, T l, T r) {
-	return at_most(r) - at_most(l - 1);
+	return at_most(t, r) - at_most(t, l - 1);
 }
