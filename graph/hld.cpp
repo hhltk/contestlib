@@ -27,7 +27,7 @@ struct HLD {
 		return ret;
 	}
 
-      private:
+	private:
 	vi par, sz, jmp, in;
 	void dfs_sz(int s, graph &g) {
 		if (auto it = find(begin(g[s]), end(g[s]), par[s]); it != end(g[s])) {
