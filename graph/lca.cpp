@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-#include "../datastruct/rmq.cpp"
+#include "../datastruct/shortrmq.cpp"
 
 // source: kactl
 // O(n log n) preprocessing, O(1) queries
@@ -30,3 +30,5 @@ struct LCA {
 		return rmq.getmin(l, r).second;
 	}
 };
+
+int main() {}
