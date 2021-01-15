@@ -1,13 +1,8 @@
  - fenwick tree
- - more segment trees
  - segment tree beats?
- - tree algorithms like block-cut decomposition, hld, cd
+ - block-cut decomposition
  - eulerian and hamiltonian paths
- - basic max flow like ford-fulkerson
- - more advanced max flows (dinic)
  - matrix utilities
  - string algorithms: kmp, suffix array, suffix tree?, manacher
  - geometry?
- - convex hull trick, lichao tree
-
  - move casts to static_cast
