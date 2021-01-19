@@ -12,22 +12,31 @@ struct HLD {
 		int t = 0;
 		dfs_hld(0, t, g);
 	}
+
 	int pos(int x) { return in[x]; }
+	pair<int, int> subtree(int x) { return {in[x], in[x] + sz[x] - 1}; }
+
 	vector<pair<int, int>> query(int a, int b) {
 		vector<pair<int, int>> ret;
-		for (;;) {
+		for (;; b = par[jmp[b]]) {
 			if (in[a] > in[b]) swap(a, b);
 			if (in[jmp[b]] <= in[a]) {
 				ret.emplace_back(in[a], in[b]);
 				break;
 			}
 			ret.emplace_back(in[jmp[b]], in[b]);
-			b = par[jmp[b]];
 		}
 		return ret;
 	}
 
-	private:
+	int lca(int a, int b) {
+		for (;; b = par[jmp[b]]) {
+			if (in[a] > in[b]) swap(a, b);
+			if (in[jmp[b]] <= in[a]) return a;
+		}
+	}
+
+private:
 	vi par, sz, jmp, in;
 	void dfs_sz(int s, graph &g) {
 		if (auto it = find(begin(g[s]), end(g[s]), par[s]); it != end(g[s])) {
