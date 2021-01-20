@@ -21,7 +21,7 @@ struct FenTree {
 	int lower_bound(T sum) {
 		if (sum <= 0) return -1;
 		int pos = 0;
-		for (int pw = 1 << std::__lg(tree.size()); pw; pw >>= 1) {
+		for (int pw = 1 << std::__lg(tree.size() + 1); pw; pw >>= 1) {
 			if (pos + pw <= int(tree.size()) && tree[pos + pw - 1] < sum) {
 				pos += pw, sum -= tree[pos - 1];
 			}
