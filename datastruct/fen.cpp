@@ -9,7 +9,7 @@ struct FenTree {
 	void update(int i, T d) {
 		for (; i < int(tree.size()); i |= i + 1) tree[i] += d;
 	}
-	// sum of values in [0, r)
+	// \sum_{i \in [0, r]} a[i]
 	T query(int r) {
 		T ret = 0;
 		for (; r > 0; r &= r - 1) ret += tree[r - 1];
@@ -21,7 +21,7 @@ struct FenTree {
 	int lower_bound(T sum) {
 		if (sum <= 0) return -1;
 		int pos = 0;
-		for (int pw = 1 << 25; pw; pw >>= 1) {
+		for (int pw = 1 << std::__lg(tree.size()); pw; pw >>= 1) {
 			if (pos + pw <= int(tree.size()) && tree[pos + pw - 1] < sum) {
 				pos += pw, sum -= tree[pos - 1];
 			}
