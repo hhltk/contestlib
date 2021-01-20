@@ -6,3 +6,4 @@
  - string algorithms: kmp, suffix array, suffix tree?, manacher
  - geometry?
  - move casts to static_cast
+ - fix: fastinput >> a >> b
