@@ -14,7 +14,8 @@ struct HLD {
 	}
 
 	int pos(int x) { return in[x]; }
-	pair<int, int> subtree(int x) { return {in[x], in[x] + sz[x] - 1}; }
+	// half-open interval!
+	pair<int, int> subtree(int x) { return {in[x], in[x] + sz[x]}; }
 
 	vector<pair<int, int>> query(int a, int b) {
 		vector<pair<int, int>> ret;
