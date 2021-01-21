@@ -1,11 +1,10 @@
-// source: Benq
-
 #include <limits>
 #include <utility>
 
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 
+// source: Benq, own
 namespace pbds {
 	const int INF = std::numeric_limits<int>::max();
 	using namespace __gnu_pbds;
