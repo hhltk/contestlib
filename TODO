@@ -1,8 +1,6 @@
- - fenwick tree
  - segment tree beats?
  - block-cut decomposition
  - eulerian and hamiltonian paths
  - matrix utilities
  - string algorithms: kmp, suffix array, suffix tree?, manacher
  - geometry?
- - move casts to static_cast
