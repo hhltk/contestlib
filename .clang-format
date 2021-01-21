@@ -1,0 +1,16 @@
+BasedOnStyle: LLVM
+
+AccessModifierOffset: -8
+AllowShortBlocksOnASingleLine: Always
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: Always
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakTemplateDeclarations: MultiLine
+ColumnLimit: 0
+IndentCaseLabels: false
+IndentWidth: 8
+NamespaceIndentation: All
+PointerAlignment: Left
+SpaceAfterTemplateKeyword: false
+UseTab: Always

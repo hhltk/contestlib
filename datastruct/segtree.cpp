@@ -10,6 +10,7 @@ class Tree {
 	T I;
 	function<T(T, T)> f;
 	vector<T> t;
+
 public:
 	Tree(int n, T I, function<T(T, T)> f) : n(n), I(I), f(f), t(n * 2, I) {}
 

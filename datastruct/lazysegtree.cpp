@@ -33,6 +33,7 @@ class SegmentTree {
 	void pull(int s) {
 		p[s] = p[s * 2] + p[s * 2 + 1];
 	}
+
 public:
 	SegmentTree(int n) : n(n), p(n * 4), l(n * 4) {}
 	long query(int l, int r) { // [l, r)

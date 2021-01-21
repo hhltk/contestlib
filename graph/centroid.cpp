@@ -11,7 +11,7 @@ namespace centroid {
 	struct CentroidDecomp {
 		vi subsz, del;
 		graph g, ret;
-		CentroidDecomp(graph &g) : subsz(sz(g)), del(sz(g)), g(g), ret(sz(g)) {
+		CentroidDecomp(graph& g) : subsz(sz(g)), del(sz(g)), g(g), ret(sz(g)) {
 			recurse();
 		}
 
@@ -37,15 +37,17 @@ namespace centroid {
 			int root = find_root(node, calc_sizes(node));
 			del[root] = 1;
 			if (prev != -1) ret[prev].push_back(root);
-			for (int u : g[root]) if (!del[u]) recurse(u, root);
+			for (int u : g[root])
+				if (!del[u]) recurse(u, root);
 		}
 	};
 	// returns the decomposed tree and the root of the tree
-	pair<graph, int> decomp(graph &g) {
+	pair<graph, int> decomp(graph& g) {
 		auto c = CentroidDecomp(g);
 		vector<bool> seen(sz(g));
-		for (auto x : c.ret) for (auto y : x) seen[y] = 1;
+		for (auto x : c.ret)
+			for (auto y : x) seen[y] = 1;
 		int r = find(seen.begin(), seen.end(), 0) - seen.begin();
 		return {c.ret, r};
 	}
-}
+} // namespace centroid

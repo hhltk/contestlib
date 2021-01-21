@@ -8,20 +8,21 @@ class LCA {
 	vector<int> dep;
 	vector<vector<int>> spr;
 
-	void dfs(int s, int e, vector<vector<int>> &g) {
+	void dfs(int s, int e, vector<vector<int>>& g) {
 		spr[s][0] = e;
 		for (int j = 0; j < k; ++j) {
 			spr[s][j + 1] = spr[spr[s][j]][j];
 		}
-		for (auto &u : g[s]) {
+		for (auto& u : g[s]) {
 			if (u != e) {
 				dep[u] = dep[s] + 1;
 				dfs(u, s, g);
 			}
 		}
 	}
+
 public:
-	LCA(vector<vector<int>> &g) : k(__lg(g.size())), dep(g.size()), spr(g.size(), vector<int>(k + 1)) {
+	LCA(vector<vector<int>>& g) : k(__lg(g.size())), dep(g.size()), spr(g.size(), vector<int>(k + 1)) {
 		dfs(0, 0, g);
 	}
 

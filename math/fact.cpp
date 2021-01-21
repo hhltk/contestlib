@@ -33,4 +33,4 @@ namespace comb {
 		ensure_facts(a);
 		return ifact[a];
 	}
-}
+} // namespace comb

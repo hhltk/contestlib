@@ -7,7 +7,8 @@ vector<int> compress(const vector<T>& orig) {
 		while (l < r) {
 			int m = (l + r) / 2;
 			if (c[m] >= x) r = m;
-			else l = m + 1;
+			else
+				l = m + 1;
 		}
 		return l;
 	};

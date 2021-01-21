@@ -8,7 +8,8 @@ public:
 	template<class T>
 	std::enable_if_t<std::is_integral_v<T>, FastInput&> operator>>(T& t) {
 		char c;
-		for (c = next_char(); c != '-' && !isdigit(c); c = next_char());
+		for (c = next_char(); c != '-' && !isdigit(c); c = next_char())
+			;
 		bool neg = c == '-';
 		if (neg) c = next_char();
 		for (t = 0; isdigit(c); c = next_char()) {
@@ -27,14 +28,15 @@ public:
 	FastInput& operator>>(std::string& s) {
 		s.clear();
 		char c;
-		while (isspace(c = next_char()));
-		do s.push_back(c); while (!isspace(c = next_char()));
+		while (isspace(c = next_char())) {}
+		do { s.push_back(c); } while (!isspace(c = next_char()));
 		return *this;
 	}
 	FastInput& operator>>(char& c) {
-		while (isspace(c = next_char()));
+		while (isspace(c = next_char())) {}
 		return *this;
 	}
+
 private:
 	char buf[1 << 20];
 	size_t it = 0, n = 0;

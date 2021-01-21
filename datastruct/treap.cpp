@@ -23,7 +23,7 @@ class Treap {
 
 public:
 	Treap(int v_) : l(0), r(0), prior(rand<int>()), sz(1), v(v_) {}
-	static Treap *merge(Treap *a, Treap *b) {
+	static Treap* merge(Treap* a, Treap* b) {
 		if (a != nullptr) {
 			a->push();
 		}
@@ -34,7 +34,7 @@ public:
 			return (a != nullptr ? a : b);
 		}
 
-		Treap *r;
+		Treap* r;
 		if (a->prior < b->prior) {
 			if (a->r != nullptr) {
 				a->r->push();
@@ -52,13 +52,13 @@ public:
 		return r;
 	}
 
-	static pair<Treap *, Treap *> split(Treap *a, int k) {
+	static pair<Treap*, Treap*> split(Treap* a, int k) {
 		if (a == nullptr) {
 			return {0, 0};
 		}
 		a->push();
 		int al = a->l != nullptr ? a->l->sz : 0;
-		Treap *r;
+		Treap* r;
 		if (al >= k) {
 			tie(r, a->l) = split(a->l, k);
 			a->update();

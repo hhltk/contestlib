@@ -15,7 +15,7 @@ class Dinic {
 		while (!q.empty()) {
 			int s = q.front();
 			q.pop();
-			for (auto &[u, id] : g[s]) {
+			for (auto& [u, id] : g[s]) {
 				if (lvl[u] == -1 && w[id] > 0) {
 					lvl[u] = lvl[s] + 1;
 					q.push(u);
@@ -24,10 +24,10 @@ class Dinic {
 		}
 		return lvl;
 	}
-	ll dfs(int node, int sink, ll x, vector<int> &c, const vector<int> &lvl) {
+	ll dfs(int node, int sink, ll x, vector<int>& c, const vector<int>& lvl) {
 		if (node == sink) return x;
 		ll r = 0;
-		for (int &ct = c[node]; ct < int(g[node].size()); ++ct) {
+		for (int& ct = c[node]; ct < int(g[node].size()); ++ct) {
 			if (!x) break;
 			auto [u, id] = g[node][ct];
 			if (w[id] < 0 || lvl[node] + 1 != lvl[u]) continue;
@@ -40,6 +40,7 @@ class Dinic {
 		}
 		return r;
 	}
+
 public:
 	Dinic(int n) : g(n){};
 

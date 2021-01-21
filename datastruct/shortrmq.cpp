@@ -10,8 +10,9 @@ using namespace std;
 template<class T, class Comparator = less<T>>
 class RMQ {
 	vector<vector<T>> spr;
+
 public:
-	RMQ(const vector<T> &v) {
+	RMQ(const vector<T>& v) {
 		spr = {v};
 		for (int j = 1; (1 << j) <= sz(v); ++j) {
 			spr.push_back(vector<T>(sz(v) - (1 << j) + 1));

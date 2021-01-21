@@ -16,8 +16,9 @@ class LiChao {
 	int n;
 	vector<Line<T>> p;
 	vector<int> xs;
+
 public:
-	LiChao(int n, vector<int> &basex) : n(n), p(n * 2, Line<T>(0, INF)), xs(n * 2) {
+	LiChao(int n, vector<int>& basex) : n(n), p(n * 2, Line<T>(0, INF)), xs(n * 2) {
 		for (int i = 0; i < int(basex.size()); ++i) xs[i + n] = basex[i];
 		for (int i = int(basex.size()); i < n; ++i) xs[i + n] = i > 0 ? xs[i + n - 1] + 1 : 0;
 		for (int i = n - 1; i > 0; --i) xs[i] = xs[i * 2];

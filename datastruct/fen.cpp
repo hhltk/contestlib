@@ -4,6 +4,7 @@
 template<class T>
 class FenTree {
 	std::vector<T> tree;
+
 public:
 	FenTree(typename std::vector<T>::size_type n) : tree(n) {}
 	void update(int i, T d) { // a[i] += dif

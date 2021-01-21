@@ -14,8 +14,9 @@ class RMQ {
 	int Comp(int i, int j) {
 		return Comparator()(v[i], v[j]) ? i : j;
 	}
+
 public:
-	RMQ(const vector<T> &v) : v(v) {
+	RMQ(const vector<T>& v) : v(v) {
 		spr = {vector<int>(sz(v))};
 		iota(spr[0].begin(), spr[0].end(), 0);
 		for (int j = 1; (1 << j) <= sz(v); ++j) {

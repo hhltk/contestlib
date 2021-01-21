@@ -8,7 +8,7 @@ using graph = vector<vi>;
 
 class HLD {
 public:
-	HLD(graph &g) : par(g.size(), -1), sz(g.size(), 1), jmp(g.size()), in(g.size()) {
+	HLD(graph& g) : par(g.size(), -1), sz(g.size(), 1), jmp(g.size()), in(g.size()) {
 		dfs_sz(0, g);
 		int t = 0;
 		dfs_hld(0, t, g);
@@ -40,11 +40,11 @@ public:
 
 private:
 	vi par, sz, jmp, in;
-	void dfs_sz(int s, graph &g) {
+	void dfs_sz(int s, graph& g) {
 		if (auto it = find(begin(g[s]), end(g[s]), par[s]); it != end(g[s])) {
 			g[s].erase(it);
 		}
-		for (int &u : g[s]) {
+		for (int& u : g[s]) {
 			par[u] = s;
 			dfs_sz(u, g);
 			sz[s] += sz[u];
@@ -53,7 +53,7 @@ private:
 			}
 		}
 	}
-	void dfs_hld(int s, int &t, graph &g) {
+	void dfs_hld(int s, int& t, graph& g) {
 		in[s] = t++;
 		for (int u : g[s]) {
 			jmp[u] = u == g[s][0] ? jmp[s] : u;

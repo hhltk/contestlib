@@ -4,6 +4,7 @@ using namespace std;
 // source: kactl, own
 class UnionFind {
 	vector<int> p;
+
 public:
 	UnionFind(int n) : p(n, -1) {}
 	int get(int s) {

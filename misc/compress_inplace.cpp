@@ -8,7 +8,7 @@ void compress(vector<T>& v) {
 	for (int i = 0; i < int(v.size()); ++i) p[i] = {v[i], i};
 	sort(p.begin(), p.end());
 	T pr = p[0].first;
-        int k = 0;
+	int k = 0;
 	for (auto [x, i] : p) {
 		k += pr != x;
 		pr = x;
@@ -16,4 +16,4 @@ void compress(vector<T>& v) {
 	}
 }
 
-int main(){}
+int main() {}
