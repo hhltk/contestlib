@@ -6,7 +6,7 @@
 class FastInput {
 public:
 	template<class T>
-	std::enable_if_t<std::is_integral_v<T>> operator>>(T& t) {
+	std::enable_if_t<std::is_integral_v<T>, FastInput&> operator>>(T& t) {
 		char c;
 		for (c = next_char(); c != '-' && !isdigit(c); c = next_char());
 		bool neg = c == '-';
@@ -15,23 +15,27 @@ public:
 			t = t * 10 + c - '0';
 		}
 		if (neg) t = -t;
+		return *this;
 	}
 	template<class T>
-	std::enable_if_t<std::is_floating_point_v<T>> operator>>(T& t) {
+	std::enable_if_t<std::is_floating_point_v<T>, FastInput&> operator>>(T& t) {
 		std::string s;
 		this->operator>>(s);
 		t = static_cast<T>(std::stold(s));
+		return *this;
 	}
-	void operator>>(std::string& s) {
+	FastInput& operator>>(std::string& s) {
 		s.clear();
 		char c;
 		while (isspace(c = next_char()));
 		do {
 			s.push_back(c);
 		} while (!isspace(c = next_char()));
+		return *this;
 	}
-	void operator>>(char& c) {
+	FastInput& operator>>(char& c) {
 		while (isspace(c = next_char()));
+		return *this;
 	}
 private:
 	char buf[1 << 20];
@@ -44,4 +48,6 @@ private:
 		}
 		return buf[it++];
 	}
-};
+} ft;
+
+#define cin ft
