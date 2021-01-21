@@ -7,7 +7,7 @@ using namespace std;
 
 // source: own, Benq
 // O(n log n) preprocessing, O(1) queries
-template <class T, class Comparator = less<T>>
+template<class T, class Comparator = less<T>>
 class RMQ {
 	vector<vector<T>> spr;
 public:

@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-template<typename T>
+template<class T>
 void compress(vector<T>& v) {
 	vector<pair<T, int>> p(v.size());
 	for (int i = 0; i < int(v.size()); ++i) p[i] = {v[i], i};

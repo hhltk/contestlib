@@ -4,7 +4,7 @@ using namespace std;
 
 // Basic segment tree. Takes the size of tree, an identity value
 // and a binary function as parameters
-template <typename T>
+template<class T>
 class Tree {
 	int n; // Has to be a power of 2
 	T I;

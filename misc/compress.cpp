@@ -1,4 +1,4 @@
-template <typename T>
+template<class T>
 vector<int> compress(const vector<T>& orig) {
 	auto c = orig;
 	stable_sort(c.begin(), c.end());

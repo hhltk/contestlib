@@ -2,7 +2,7 @@
 using namespace std;
 using ll = long long;
 
-template <typename T>
+template<class T>
 class Line {
 public:
 	T a, b;
@@ -12,7 +12,7 @@ public:
 	}
 };
 
-template <typename T>
+template<class T>
 class LiChao {
 	const T INF = numeric_limits<T>::max() >> 2;
 	int n;

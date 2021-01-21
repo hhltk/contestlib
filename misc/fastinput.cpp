@@ -5,7 +5,7 @@
 
 class FastInput {
 public:
-	template <typename T>
+	template<class T>
 	std::enable_if_t<std::is_integral_v<T>> operator>>(T& t) {
 		char c;
 		for (c = next_char(); c != '-' && !isdigit(c); c = next_char());
@@ -16,7 +16,7 @@ public:
 		}
 		if (neg) t = -t;
 	}
-	template <typename T>
+	template<class T>
 	std::enable_if_t<std::is_floating_point_v<T>> operator>>(T& t) {
 		std::string s;
 		this->operator>>(s);

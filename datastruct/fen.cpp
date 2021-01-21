@@ -1,7 +1,7 @@
 #include <vector>
 
 // source: kactl
-template <typename T>
+template<class T>
 class FenTree {
 	std::vector<T> tree;
 public:

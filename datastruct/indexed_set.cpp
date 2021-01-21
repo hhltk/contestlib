@@ -10,7 +10,7 @@ const int INF = numeric_limits<int>::max();
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 
-template <typename T>
+template<class T>
 using indexed_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; 
 
 // Use with pairs to get a multiset
@@ -18,17 +18,17 @@ using indexed_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statisti
 // 	tree.order_of_key
 // 	tree.find_by_order
 
-template<typename T>
+template<class T>
 int at_most(indexed_set<pair<T, int>>& t, T k) {
 	return t.order_of_key({k, INF});
 }
 
-template<typename T>
+template<class T>
 int at_least(indexed_set<pair<T, int>>& t, T k) {
 	return t.size() - at_most(t, k - 1);
 }
 
-template<typename T>
+template<class T>
 int range_sum(indexed_set<pair<T, int>>& t, T l, T r) {
 	return at_most(t, r) - at_most(t, l - 1);
 }

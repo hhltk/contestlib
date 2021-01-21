@@ -44,14 +44,14 @@ namespace hasher {
 
 	HashPair bases(hash_t(dist(rng)), hash_t(dist(rng)));
 
-	template <class T>
+	template<class T>
 	HashPair calc(const T &x) {
 		HashPair r;
 		for (auto &u : x) r = r * bases + HashPair(hash_t(u));
 		return r;
 	}
 
-	template <class T>
+	template<class T>
 	vector<HashPair> calc_vector(const T &x) {
 		vector<HashPair> r(1);
 		for (auto &u : x) r.push_back(r.back() * bases + HashPair(hash_t(u)));

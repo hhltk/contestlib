@@ -1,7 +1,7 @@
 #include <deque>
 using namespace std;
 
-template <class T, class Compare>
+template<class T, class Compare>
 class MonotonicQueue {
 	int l = 0, r = 0;
 	deque<pair<T, int>> d;

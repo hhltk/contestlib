@@ -2,7 +2,7 @@
 using namespace std;
 using ll = long long;
 
-template <typename T>
+template<class T>
 T pow(T a, ll b) {
 	T r = 1;
 	for (; b; b /= 2, a *= a) if (b % 2) r *= a;
@@ -10,7 +10,7 @@ T pow(T a, ll b) {
 }
 
 // source: ecnerwala, own, benq
-template <int MOD>
+template<int MOD>
 class ModInt {
 	int v;
 public:
