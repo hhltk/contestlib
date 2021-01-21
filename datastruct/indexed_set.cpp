@@ -39,4 +39,9 @@ namespace pbds {
 		static int t = 0;
 		s.insert(std::make_pair(x, t++));
 	}
+
+	template<class T>
+	void erase(set<std::pair<T, int>>& s, T x) {
+		s.erase(s.lower_bound(std::make_pair(x, -INF)));
+	}
 } // namespace pbds
