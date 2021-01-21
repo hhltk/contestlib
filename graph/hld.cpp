@@ -6,7 +6,8 @@ using namespace std;
 using vi = vector<int>;
 using graph = vector<vi>;
 
-struct HLD {
+class HLD {
+public:
 	HLD(graph &g) : par(g.size(), -1), sz(g.size(), 1), jmp(g.size()), in(g.size()) {
 		dfs_sz(0, g);
 		int t = 0;

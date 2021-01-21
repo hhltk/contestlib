@@ -2,15 +2,13 @@
 using namespace std;
 
 // source: kactl, own
-struct UnionFind {
+class UnionFind {
 	vector<int> p;
-
+public:
 	UnionFind(int n) : p(n, -1) {}
-
 	int get(int s) {
 		return p[s] < 0 ? s : (p[s] = get(p[s]));
 	}
-
 	bool unite(int a, int b) {
 		a = get(a);
 		b = get(b);

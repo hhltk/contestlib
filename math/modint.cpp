@@ -11,8 +11,9 @@ T pow(T a, ll b) {
 
 // source: ecnerwala, own, benq
 template <int MOD>
-struct ModInt {
+class ModInt {
 	int v;
+public:
 	ModInt() : v(0) {}
 	ModInt(ll x) : v(x % MOD) { if (v < 0) v += MOD; }
 	explicit operator int() const { return v; }
@@ -38,6 +39,8 @@ struct ModInt {
 	friend ModInt operator-(const ModInt &a, const ModInt &b) { return ModInt(a) -= b; }
 	friend ModInt operator*(const ModInt &a, const ModInt &b) { return ModInt(a) *= b; }
 	friend ModInt operator/(const ModInt &a, const ModInt &b) { return ModInt(a) /= b; }
+
+	bool operator==(const ModInt& oth) { return v == oth.v; }
 };
 
 constexpr int MOD = 1e9 + 7;

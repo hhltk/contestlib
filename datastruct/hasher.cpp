@@ -1,5 +1,6 @@
 #include <chrono>
 #include <random>
+#include <tuple>
 #include <vector>
 using namespace std;
 
@@ -9,8 +10,9 @@ namespace hasher {
 	const int MOD = 1e9 + 7;
 	using hash_t = ModInt<MOD>;
 
-	struct HashPair {
+	class HashPair {
 		hash_t x, y;
+	public:
 		HashPair() : x(0), y(0) {}
 		HashPair(hash_t u) : x(u), y(u) {}
 		HashPair(hash_t x, hash_t y) : x(x), y(y) {}
@@ -33,6 +35,8 @@ namespace hasher {
 		friend HashPair operator*(const HashPair &lhs, const HashPair &rhs) { return HashPair(lhs) *= rhs; }
 		friend HashPair operator+(const HashPair &lhs, const HashPair &rhs) { return HashPair(lhs) += rhs; }
 		friend HashPair operator-(const HashPair &lhs, const HashPair &rhs) { return HashPair(lhs) -= rhs; }
+		bool operator==(const HashPair& oth) { return tie(x, y) == tie(oth.x, oth.y); }
+		bool operator!=(const HashPair& oth) { return !((*this) == oth); }
 	};
 
 	mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());

@@ -2,8 +2,9 @@
 
 // source: kactl
 template <typename T>
-struct FenTree {
+class FenTree {
 	std::vector<T> tree;
+public:
 	FenTree(typename std::vector<T>::size_type n) : tree(n) {}
 	// a[i] += dif
 	void update(int i, T d) {

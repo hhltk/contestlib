@@ -3,7 +3,8 @@ using namespace std;
 using ll = long long;
 
 template <typename T>
-struct Line {
+class Line {
+public:
 	T a, b;
 	Line(T a, T b) : a(a), b(b) {}
 	T operator()(T x) {
@@ -12,11 +13,12 @@ struct Line {
 };
 
 template <typename T>
-struct LiChao {
+class LiChao {
 	const T INF = numeric_limits<T>::max() >> 2;
 	int n;
 	vector<Line<T>> p;
 	vector<int> xs;
+public:
 	LiChao(int n, vector<int> &basex) : n(n), p(n * 2, Line<T>(0, INF)), xs(n * 2) {
 		for (int i = 0; i < int(basex.size()); ++i)
 			xs[i + n] = basex[i];

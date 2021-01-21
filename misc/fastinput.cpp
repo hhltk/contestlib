@@ -3,7 +3,8 @@
 #include <string>
 #include <type_traits>
 
-struct FastInput {
+class FastInput {
+public:
 	template <typename T>
 	std::enable_if_t<std::is_integral_v<T>> operator>>(T& t) {
 		char c;
