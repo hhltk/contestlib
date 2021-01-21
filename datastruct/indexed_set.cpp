@@ -11,8 +11,8 @@ namespace pbds {
 
 	using namespace __gnu_pbds;
 
-	template<class T>
-	using set = tree<T, null_type, std::less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+	template<class T, class C = std::less<T>>
+	using set = tree<T, null_type, C, rb_tree_tag, tree_order_statistics_node_update>;
 
 	// Use with pairs to get a multiset
 	// Useful functions:
