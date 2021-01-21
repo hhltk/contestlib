@@ -29,7 +29,5 @@ public:
 		int d = __lg(r - l + 1);
 		return Comp(spr[d][l], spr[d][r - (1 << d) + 1]);
 	}
-	T getmin(int l, int r) {
-		return v[argmin(l, r)];
-	}
+	T getmin(int l, int r) { return v[argmin(l, r)]; }
 };

@@ -14,9 +14,9 @@ public:
 	Tree(int n, T I, function<T(T, T)> f) : n(n), I(I), f(f), t(n * 2, I) {}
 
 	void change(int k, T x) {
-		for (t[k += n] = x; (k /= 2) != 0;) {
-			t[k] = f(t[k * 2], t[k * 2 + 1]);
-		}
+		k += n;
+		t[k] = x;
+		while (k /= 2) t[k] = f(t[k * 2], t[k * 2 + 1]);
 	}
 	T query(int a, int b) { // [a, b)
 		T r = I;
@@ -26,8 +26,7 @@ public:
 			if (a & 1) r = f(r, t[a++]);
 			if (b & 1) buf[bufit++] = t[--b];
 		}
-		for (int i = bufit - 1; i >= 0; --i)
-			r = f(r, buf[i]);
+		for (int i = bufit - 1; i >= 0; --i) r = f(r, buf[i]);
 		return r;
 	}
 };

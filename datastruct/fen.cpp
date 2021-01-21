@@ -6,12 +6,10 @@ class FenTree {
 	std::vector<T> tree;
 public:
 	FenTree(typename std::vector<T>::size_type n) : tree(n) {}
-	// a[i] += dif
-	void update(int i, T d) {
+	void update(int i, T d) { // a[i] += dif
 		for (; i < int(tree.size()); i |= i + 1) tree[i] += d;
 	}
-	// \sum_{i \in [0, r)} a[i]
-	T query(int r) {
+	T query(int r) { // \sum_{i \in [0, r)} a[i]
 		T ret = 0;
 		for (; r > 0; r &= r - 1) ret += tree[r - 1];
 		return ret;

@@ -7,17 +7,11 @@ class MonotonicQueue {
 	deque<pair<T, int>> d;
 public:
 	void push(T x) {
-		while (!d.empty() && !Compare{}(d.back().first, x)) {
+		while (!d.empty() && !Compare()(d.back().first, x)) {
 			d.pop_back();
 		}
 		d.push_back({x, r++});
 	}
-
-	void pop() {
-		if (d.front().second == l++) d.pop_front();
-	}
-
-	T get() {
-		return d.front().first;
-	}
+	void pop() { if (d.front().second == l++) d.pop_front(); }
+	T get() { return d.front().first; }
 };
