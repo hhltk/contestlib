@@ -75,8 +75,8 @@ void ensure_pows(int n) {
 	}
 }
 
-HashPair range(const vector<HashPair> &k, int l, int r) {
-	ensure_pows(r - l + 1);
-	return k[r + 1] - k[l] * pows[r - l];
+HashPair range(const vector<HashPair> &k, int l, int r) { // [l, r)
+	ensure_pows(r - l);
+	return k[r] - k[l] * pows[r - l - 1];
 }
 } // namespace hasher
