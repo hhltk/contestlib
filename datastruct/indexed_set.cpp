@@ -2,33 +2,41 @@
 
 #include <limits>
 #include <utility>
-using namespace std;
-
-const int INF = numeric_limits<int>::max();
 
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
 
-template<class T>
-using indexed_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+namespace pbds {
+	const int INF = std::numeric_limits<int>::max();
 
-// Use with pairs to get a multiset
-// Useful functions:
-// 	tree.order_of_key
-// 	tree.find_by_order
+	using namespace __gnu_pbds;
 
-template<class T>
-int at_most(indexed_set<pair<T, int>>& t, T k) {
-	return t.order_of_key({k, INF});
-}
+	template<class T>
+	using set = tree<T, null_type, std::less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
-template<class T>
-int at_least(indexed_set<pair<T, int>>& t, T k) {
-	return t.size() - at_most(t, k - 1);
-}
+	// Use with pairs to get a multiset
+	// Useful functions:
+	// 	tree.order_of_key
+	// 	tree.find_by_order
 
-template<class T>
-int range_sum(indexed_set<pair<T, int>>& t, T l, T r) {
-	return at_most(t, r) - at_most(t, l - 1);
-}
+	template<class T>
+	int at_most(set<std::pair<T, int>>& s, T k) {
+		return s.order_of_key({k, INF});
+	}
+
+	template<class T>
+	int at_least(set<std::pair<T, int>>& s, T k) {
+		return s.size() - at_most(s, k - 1);
+	}
+
+	template<class T>
+	int range_sum(set<std::pair<T, int>>& s, T l, T r) {
+		return at_most(s, r) - at_most(s, l - 1);
+	}
+
+	template<class T>
+	void insert(set<std::pair<T, int>>& s, T x) {
+		static int t = 0;
+		s.insert(std::make_pair(x, t++));
+	}
+} // namespace pbds
