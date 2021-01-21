@@ -13,9 +13,7 @@ public:
 		a = get(a);
 		b = get(b);
 		if (a != b) {
-			if (p[b] < p[a]) {
-				swap(a, b);
-			}
+			if (p[b] < p[a]) swap(a, b);
 			p[a] += p[b];
 			p[b] = a;
 		}

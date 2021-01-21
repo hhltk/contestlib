@@ -7,9 +7,7 @@ namespace comb {
 	vector<mint> fact, ifact;
 
 	void ensure_facts(int n) {
-		if (int(fact.size()) >= n) {
-			return;
-		}
+		if (int(fact.size()) >= n) return;
 		if (fact.empty()) {
 			fact.emplace_back(1);
 			ifact.emplace_back(1);
@@ -21,9 +19,7 @@ namespace comb {
 	}
 
 	mint choose(int a, int b) {
-		if (a < b || b < 0) {
-			return 0;
-		}
+		if (a < b || b < 0) return 0;
 		ensure_facts(a);
 		return fact[a] * ifact[b] * ifact[a - b];
 	}

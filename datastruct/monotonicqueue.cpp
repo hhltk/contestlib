@@ -14,9 +14,7 @@ public:
 	}
 
 	void pop() {
-		if (d.front().second == l++) {
-			d.pop_front();
-		}
+		if (d.front().second == l++) d.pop_front();
 	}
 
 	T get() {

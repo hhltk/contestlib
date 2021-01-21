@@ -25,7 +25,6 @@ public:
 		dfs(0, 0, g);
 	}
 
-
 	int up(int a, int b) {
 		for (int j = k; j >= 0; --j) {
 			if (b >= (1 << j)) {
@@ -37,9 +36,7 @@ public:
 	}
 
 	int query(int a, int b) {
-		if (dep[a] < dep[b]) {
-			swap(a, b);
-		}
+		if (dep[a] < dep[b]) swap(a, b);
 		a = up(a, dep[a] - dep[b]);
 		for (int j = k; j >= 0; --j) {
 			if (spr[a][j] != spr[b][j]) {
