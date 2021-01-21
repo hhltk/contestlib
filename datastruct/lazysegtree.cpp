@@ -1,29 +1,20 @@
 #include <vector>
 using namespace std;
 
-struct SegmentTree {
+class SegmentTree {
 	int n;
 	vector<long> p;
 	vector<long> l;
-	SegmentTree(int n) : n(n), p(n * 4), l(n * 4) {}
 	long query(int s, int l, int r, int x, int y) {
-		if (y <= l || r <= x) {
-			return 0;
-		}
-		if (l <= x && y <= r) {
-			return p[s];
-		}
+		if (y <= l || r <= x) return 0;
+		if (l <= x && y <= r) return p[s];
 		push(s, y - x);
 		int m = (x + y) / 2;
 		return query(s * 2, l, r, x, m) + query(s * 2 + 1, l, r, m, y);
 	}
 	void change(int s, int l, int r, int x, int y, long k) {
-		if (y <= l || r <= x) {
-			return;
-		}
-		if (l <= x && y <= r) {
-			return apply(s, y - x, k);
-		}
+		if (y <= l || r <= x) return;
+		if (l <= x && y <= r) return apply(s, y - x, k);
 		push(s, y - x);
 		int m = (x + y) / 2;
 		change(s * 2, l, r, x, m, k);
@@ -42,10 +33,12 @@ struct SegmentTree {
 	void pull(int s) {
 		p[s] = p[s * 2] + p[s * 2 + 1];
 	}
-	long query(int l, int r) {
+public:
+	SegmentTree(int n) : n(n), p(n * 4), l(n * 4) {}
+	long query(int l, int r) { // [l, r)
 		return query(1, l, r, 0, n);
 	}
-	void change(int l, int r, long k) {
+	void change(int l, int r, long k) { // [l, r)
 		change(1, l, r, 0, n, k);
 	}
 };
