@@ -24,14 +24,14 @@ class Dinic {
 		}
 		return lvl;
 	}
-	ll dfs(int node, int sink, ll x, vector<int>& c, const vector<int>& lvl) {
-		if (node == sink) return x;
+	ll dfs(int s, int t, ll x, vector<int>& c, const vector<int>& lvl) {
+		if (s == t) return x;
 		ll r = 0;
-		for (int& ct = c[node]; ct < int(g[node].size()); ++ct) {
+		for (int& i = c[s]; i < int(g[s].size()); ++i) {
 			if (!x) break;
-			auto [u, id] = g[node][ct];
-			if (w[id] < 0 || lvl[node] + 1 != lvl[u]) continue;
-			ll f = dfs(u, sink, min(x, w[id]), c, lvl);
+			auto [u, id] = g[s][i];
+			if (w[id] < 0 || lvl[s] + 1 != lvl[u]) continue;
+			ll f = dfs(u, t, min(x, w[id]), c, lvl);
 			w[id] -= f;
 			w[id ^ 1] += f;
 			x -= f;
@@ -51,12 +51,12 @@ public:
 		w.push_back(directed ? 0 : c);
 	}
 
-	ll push(int source, int sink) {
+	ll push(int source, int t) {
 		ll flow = 0, f;
 		do {
 			auto lvl = calclvls(source);
 			vector<int> c(g.size());
-			f = dfs(source, sink, numeric_limits<ll>::max(), c, lvl);
+			f = dfs(source, t, numeric_limits<ll>::max(), c, lvl);
 			flow += f;
 		} while (f > 0);
 		return flow;
