@@ -59,7 +59,7 @@ namespace hasher {
 		return r;
 	}
 
-	vector<HashPair> pows{bases};
+	vector<HashPair> pows {bases};
 
 	void ensure_pows(int n) {
 		if (int(pows.size()) >= n) return;

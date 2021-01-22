@@ -1,8 +1,9 @@
-#include <vector>
 #include <numeric>
+#include <vector>
 
 class DSU {
 	std::vector<int> f, siz;
+
 public:
 	DSU(int n) : f(n), siz(n, 1) { std::iota(f.begin(), f.end(), 0); }
 	int root(int x) {
