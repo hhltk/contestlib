@@ -1,5 +1,8 @@
 BasedOnStyle: LLVM
 
+SpaceBeforeCpp11BracedList: true
+
+BreakBeforeBraces: Attach
 AccessModifierOffset: -8
 AllowShortBlocksOnASingleLine: Always
 AllowShortFunctionsOnASingleLine: All

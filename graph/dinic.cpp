@@ -42,7 +42,7 @@ class Dinic {
 	}
 
 public:
-	Dinic(int n) : g(n){};
+	Dinic(int n) : g(n) {};
 
 	void addedge(int a, int b, int c, bool directed) {
 		g[a].emplace_back(b, int(w.size()));
