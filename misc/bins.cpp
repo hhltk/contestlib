@@ -3,11 +3,8 @@
 auto bins = [](auto l, auto r, auto f) {
 	while (l < r) {
 		int m = l + (r - l) / 2;
-		if (f(m)) {
-			r = m;
-		} else {
-			l = m + 1;
-		}
+		if (f(m)) r = m;
+		else l = m + 1;
 	}
 	return l;
 };
