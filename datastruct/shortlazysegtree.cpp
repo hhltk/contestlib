@@ -21,11 +21,10 @@ struct seg {
 	void push(int s, int len) {
 		apply(s * 2, len / 2, lz[s]);
 		apply(s * 2 + 1, len / 2, lz[s]);
-		lz[s] = -1;
+		lz[s] = 0;
 	}
 	void apply(int s, int len, int x) {
-		if (x == -1) return;
-		ps[s] = x * len;
+		ps[s] += x * len;
 		lz[s] = x;
 	}
 } seg;
