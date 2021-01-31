@@ -1,5 +1,3 @@
-// clang-format off
-
 // Finds the partition point of f in range [l, r)
 // i.e. minimum x such that f(x) = true and x \in [l, r)
 auto bins = [](auto l, auto r, auto f) {
@@ -10,5 +8,3 @@ auto bins = [](auto l, auto r, auto f) {
 	}
 	return l;
 };
-
-// clang-format on
