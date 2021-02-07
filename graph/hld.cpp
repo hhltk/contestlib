@@ -10,8 +10,7 @@ class HLD {
 public:
 	HLD(graph& g) : par(g.size(), -1), sz(g.size(), 1), jmp(g.size()), in(g.size()) {
 		dfs_sz(0, g);
-		int t = 0;
-		dfs_hld(0, t, g);
+		dfs_hld(0, g);
 	}
 
 	int pos(int x) { return in[x]; }
@@ -39,25 +38,22 @@ public:
 	}
 
 private:
+	int t = 0;
 	vi par, sz, jmp, in;
 	void dfs_sz(int s, graph& g) {
-		if (auto it = find(begin(g[s]), end(g[s]), par[s]); it != end(g[s])) {
-			g[s].erase(it);
-		}
+		if (auto it = find(begin(g[s]), end(g[s]), par[s]); it != end(g[s])) g[s].erase(it);
 		for (int& u : g[s]) {
 			par[u] = s;
 			dfs_sz(u, g);
 			sz[s] += sz[u];
-			if (sz[u] > sz[g[s][0]]) {
-				swap(u, g[s][0]);
-			}
+			if (sz[u] > sz[g[s][0]]) swap(u, g[s][0]);
 		}
 	}
-	void dfs_hld(int s, int& t, graph& g) {
+	void dfs_hld(int s, graph& g) {
 		in[s] = t++;
 		for (int u : g[s]) {
 			jmp[u] = u == g[s][0] ? jmp[s] : u;
-			dfs_hld(u, t, g);
+			dfs_hld(u, g);
 		}
 	}
 };
