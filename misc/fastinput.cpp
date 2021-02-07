@@ -28,7 +28,7 @@ public:
 		s.clear();
 		char c;
 		while (isspace(c = next_char())) {}
-		do { s.push_back(c); } while (!isspace(c = next_char()));
+		do s.push_back(c); while (!isspace(c = next_char()));
 		return *this;
 	}
 	FastInput& operator>>(char& c) {
