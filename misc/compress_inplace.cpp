@@ -15,5 +15,3 @@ void compress(vector<T>& v) {
 		v[i] = k;
 	}
 }
-
-int main() {}
