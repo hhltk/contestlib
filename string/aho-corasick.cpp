@@ -7,7 +7,7 @@ int n,k;
 struct AC
 {
 	int nxt[MAXN][26],nc,link[MAXN],que[MAXN];
-	int add(char*p,int i)
+	int add(char*p)
 	{
 		int n=0;
 		while(*p)
@@ -61,7 +61,7 @@ int main()
 	for(int i=1;i<=k;++i)
 	{
 		scanf("%s",buf);
-		t[i]=ac.add(buf,i);
+		t[i]=ac.add(buf);
 	}
 	ac.push_links();
 	ac.match(s);
