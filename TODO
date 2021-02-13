@@ -2,5 +2,5 @@
  - block-cut decomposition
  - eulerian and hamiltonian paths
  - matrix utilities
- - string algorithms: kmp, suffix array, suffix tree?, manacher
+ - string algorithms: suffix array, suffix tree?, manacher
  - geometry?
