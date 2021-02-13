@@ -1,72 +1,77 @@
-#include <bits/stdc++.h>
-using namespace std;
-const int MAXN=500005;
-int seen[MAXN],t[MAXN];
-char s[MAXN],buf[MAXN];
-int n,k;
-struct AC
-{
-	int nxt[MAXN][26],nc,link[MAXN],que[MAXN];
-	int add(char*p)
-	{
-		int n=0;
-		while(*p)
-		{
-			if(!nxt[n][*p-'a'])nxt[n][*p-'a']=++nc;
-			n=nxt[n][*p-'a'];
-			p++;
+template<char MC = 'a', int AS = 26>
+class AhoCorasick {
+	class Node {
+	public:
+		int nxt[AS];
+		int link = 0; // suffix link to the next true suffix that appears in the tree
+		int dict = -1; // suffix link to the next true suffix that appears in the dictionary
+		int word_index = -1;
+		Node() {
+			fill(nxt, nxt + AS, -1);
+		}
+	};
+	vector<Node> nodes;
+	int add_word(string& s) {
+		int n = 0;
+		for (auto c : s) {
+			c -= MC;
+			if (nodes[n].nxt[c] < 0) {
+				nodes[n].nxt[c] = nodes.size();
+				nodes.emplace_back();
+			}
+			n = nodes[n].nxt[c];
 		}
 		return n;
 	}
-	void push_links()
-	{
-		que[0]=0;
-		int l=0,r=1;
-		while(l<r)
-		{
-			int n=que[l++];
-			int k=link[n];
-			for(int i=0;i<26;++i)
-			{
-				if(nxt[n][i])
-				{
-					link[nxt[n][i]] = !n ? 0 : nxt[k][i];
-					que[r++]=nxt[n][i];
+	vector<int> word_index;
+	vector<int> sorted_word_indices;
+	vector<int> rev;
+public:
+	AhoCorasick(vector<string>& words) : nodes(1), word_index(words.size()), rev(words.size()) {
+		for (int i = 0; i < (int)words.size(); ++i) {
+			word_index[i] = add_word(words[i]);
+			int& j = nodes[word_index[i]].word_index;
+			if (j < 0) j = i;
+			rev[i] = j;
+		}
+		queue<int> que;
+		que.push(0);
+		while (!que.empty()) {
+			int n = que.front();
+			que.pop();
+			if (nodes[n].word_index >= 0) {
+				sorted_word_indices.push_back(n);
+			}
+			int k = nodes[n].link;
+			for (int i = 0; i < AS; ++i) {
+				if (nodes[n].nxt[i] < 0) {
+					nodes[n].nxt[i] = max(nodes[k].nxt[i], 0);
 				}
-				else
-				{
-					nxt[n][i]=nxt[k][i];
+				else {
+					int u = n ? nodes[k].nxt[i] : 0;
+					nodes[nodes[n].nxt[i]].link = u;
+					nodes[nodes[n].nxt[i]].dict = nodes[u].word_index < 0 ? nodes[u].dict : u;
+					que.push(nodes[n].nxt[i]);
 				}
 			}
 		}
+		reverse(sorted_word_indices.begin(), sorted_word_indices.end());
 	}
-	void match(char*p)
-	{
-		int n=0;
-		while(*p)
-		{
-			n=nxt[n][*p-'a'];
-			seen[n]++;
-			p++;
+	vector<int> match(string& s) {
+		vector<int> ret(word_index.size());
+		int n = 0;
+		for (auto c : s) {
+			n = nodes[n].nxt[c - MC];
+			if (int d = nodes[n].word_index < 0 ? nodes[n].dict : n; d >= 0) {
+				ret[nodes[d].word_index]++;
+			}
 		}
-		for(int i=nc+1;i;--i)
-		{
-			seen[link[que[i]]]+=seen[que[i]];
+		for (auto i : sorted_word_indices) {
+			if (int d = nodes[i].dict; d >= 0) {
+				ret[nodes[d].word_index] += ret[nodes[i].word_index];
+			}
 		}
+		for (int i = 0; i < (int)ret.size(); ++i) ret[i] = ret[rev[i]];
+		return ret;
 	}
-}ac;
-int main()
-{
-	scanf("%s%d",s,&k);
-	for(int i=1;i<=k;++i)
-	{
-		scanf("%s",buf);
-		t[i]=ac.add(buf);
-	}
-	ac.push_links();
-	ac.match(s);
-	for(int i=1;i<=k;++i)
-	{
-		printf("%d\n",seen[t[i]]);
-	}
-}
+};
