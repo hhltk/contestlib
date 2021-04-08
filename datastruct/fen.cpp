@@ -1,12 +1,12 @@
 #include <vector>
+using namespace std;
 
 // source: kactl
-template<class T>
-class FenTree {
-	std::vector<T> tree;
+template <typename T>
+struct FenTree {
+	vector<T> tree;
 
-public:
-	FenTree(typename std::vector<T>::size_type n) : tree(n) {}
+	FenTree(int n) : tree(n, {}) {}
 	void update(int i, T d) { // a[i] += dif
 		for (; i < int(tree.size()); i |= i + 1) tree[i] += d;
 	}
