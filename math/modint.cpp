@@ -4,7 +4,7 @@ using ll = long long;
 
 template<class T> T pow(T a, ll b) { T r = 1; for (; b; b /= 2, a *= a) if (b % 2) r *= a; return r; }
 
-// source: ecnerwala, own, benq
+// source: ecnerwala, own, Benq
 template<int MOD>
 struct ModInt {
 	int v;
